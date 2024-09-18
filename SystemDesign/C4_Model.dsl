@@ -10,6 +10,14 @@ workspace "Cinema reservation system" "An application that allows users to book 
             api = container "API" "The back-end application that handles the core business logic and domain-related operations. It exposes endpoints for the website to interact with the system." {
                 tags "Application Layer"
                 
+                userAuthenticationService = component "User Authentication" "" {
+                    tags "Application Layer"
+                }
+                
+                userManagementService = component "User Management" "" {
+                    tags "Application Layer"
+                }
+                
                 reservationService = component "Reservation Service" "Handles the reservation-related business logic." {
                     tags "Application Layer"
                 }
@@ -23,8 +31,11 @@ workspace "Cinema reservation system" "An application that allows users to book 
                 }
                 
                 movieService -> repository "Fetches movie data from"
+                userAuthenticationService -> repository "use"
+                userManagementService -> repository "use"
                 reservationService -> repository "Handles reservation data through"
                 movieService -> reservationService "Interacts with reservation logic to manage availability"
+                reservationService -> userManagementService "Interacts with user management logic to manage the reservation"
             }
             
             db = container "Database" "Represents the data storage layer where movie, reservation, and user information is stored. This is part of the Infrastructure Layer and is abstracted by the repository." {
@@ -34,6 +45,8 @@ workspace "Cinema reservation system" "An application that allows users to book 
             repository -> db "Uses for data persistence and retrieval"
             website -> reservationService "Interacts with to manage movie reservations"
             website -> movieService "Fetches movie listings and details through"
+            website -> userAuthenticationService "Authenticate the user"
+            website -> userManagementService "Managemt the user account"
         }
         
         user = person "User" "Represents a typical user of the cinema reservation system. The user interacts with the website to browse movies and make reservations." {
