@@ -8,7 +8,8 @@
         "client": {
             "ci": 123123121,
             "createdAt": "dd-mm-yyyy",
-            "fullName": "name"
+            "fullName": "name",
+            "email": "someemail"
         }
     }
 ]

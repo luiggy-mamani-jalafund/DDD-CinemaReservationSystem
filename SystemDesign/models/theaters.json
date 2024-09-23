@@ -9,7 +9,7 @@
                 "sits": [
                     {
                         "id": "b-19",
-                        "state": "occupied"
+                        "isOccupied": false
                     }
                 ]
             },
@@ -19,7 +19,7 @@
                 "sits": [
                     {
                         "id": "b-19",
-                        "state": "occupied"
+                        "isOccupied": true
                     }
                 ]
             }
