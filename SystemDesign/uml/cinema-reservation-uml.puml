@@ -1,0 +1,81 @@
+@startuml
+
+package "Business Layer" {
+    interface IMovieService {
+        +getMovieDetails(movieId: Guid): Movie
+        +getMoviesForDate(date: DateTime): List<Movie>
+    }
+
+    interface IReservationService {
+        +reserveSeats(movieId: Guid, seats: int): boolean
+        +checkAvailability(movieId: Guid, requestedSeats: int): boolean
+    }
+
+    class MovieService implements IMovieService {
+        -movieRepository: IMovieRepository
+        -reservationService: IReservationService
+        +getMovieDetails(movieId: Guid): Movie
+        +getMoviesForDate(date: DateTime): List<Movie>
+    }
+
+    class ReservationService implements IReservationService {
+        -reservationRepository: IReservationRepository
+        +reserveSeats(movieId: Guid, seats: int): boolean
+        +checkAvailability(movieId: Guid, requestedSeats: int): boolean
+    }
+}
+
+package "Data Access Layer" {
+    interface IMovieRepository {
+        +findMovies(): List<Movie>
+        +findMovieById(movieId: Guid): Movie
+    }
+
+    interface IReservationRepository {
+        +saveReservation(reservation: Reservation): void
+        +checkReservationAvailability(movieId: Guid, requestedSeats: int): boolean
+    }
+
+    class MovieRepository implements IMovieRepository {
+        +findMovies(): List<Movie>
+        +findMovieById(movieId: Guid): Movie
+    }
+
+    class ReservationRepository implements IReservationRepository {
+        +saveReservation(reservation: Reservation): void
+        +checkReservationAvailability(movieId: Guid, requestedSeats: int): boolean
+    }
+}
+
+package "Domain Layer" {
+    class Movie {
+        -Id: Guid
+        -Title: string
+        -Image: string
+        -Duration: int
+        -Genre: string
+        -Rating: float
+    }
+
+    class Reservation {
+        -Id: Guid
+        -MovieId: Guid
+        -Time: double
+        -MaxOfSeats: int
+        -ReservationDate: DateTime
+        -Clients: List<string>
+    }
+
+    class ReservationValidator {
+        +validate(reservation: Reservation): boolean
+    }
+}
+
+IMovieService --> IMovieRepository : "Retrieves movie data"
+IMovieService --> IReservationService : "Checks availability for movie"
+IReservationService --> IReservationRepository : "Persists or checks reservation availability"
+MovieService --> IMovieRepository
+MovieService --> ReservationValidator 
+ReservationService --> IReservationRepository
+ReservationService --> ReservationValidator : "Validates reservation data"
+@enduml

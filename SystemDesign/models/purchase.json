@@ -1,0 +1,15 @@
+[
+    {
+        "id": "some-id",
+        "shduleId": "some-id",
+        "hoursShduleId": "some-id",
+        "theaterId": "some-id",
+        "sists": ["b-19", "b-20", "b-21"],
+        "client": {
+            "ci": 123123121,
+            "createdAt": "dd-mm-yyyy",
+            "fullName": "name",
+            "email": "someemail"
+        }
+    }
+]
