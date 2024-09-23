@@ -1,0 +1,28 @@
+[
+    {
+        "id": "some-id",
+        "name": "theater 1",
+        "sists": [
+            {
+                "columns": 3,
+                "rows": 5,
+                "sits": [
+                    {
+                        "id": "b-19",
+                        "state": "occupied"
+                    }
+                ]
+            },
+            {
+                "columns": 5,
+                "rows": 12,
+                "sits": [
+                    {
+                        "id": "b-19",
+                        "state": "occupied"
+                    }
+                ]
+            }
+        ]
+    }
+]
