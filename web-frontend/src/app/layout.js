@@ -1,13 +1,13 @@
 import localFont from "next/font/local";
-import "./styles/globals.scss";
+import "../styles/globals.scss";
 
 const geistSans = localFont({
-  src: "./styles/base/fonts/GeistVF.woff",
+  src: "../styles/base/fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 const geistMono = localFont({
-  src: "./styles/base/fonts/GeistMonoVF.woff",
+  src: "../styles/base/fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
