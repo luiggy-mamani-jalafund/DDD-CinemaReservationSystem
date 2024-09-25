@@ -1,9 +1,9 @@
 "use client";
 
 import Image from 'next/image';
-import styles from './page.module.scss';
+import styles from './styles/modules/_page.module.scss';
 import Button from './components/atoms/Button.js';
-import stylesbutton from './styles/modules/Button.module.scss';
+import stylesbutton from './styles/modules/_button.module.scss';
 
 export default function Home() {
   return (
