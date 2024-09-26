@@ -241,259 +241,197 @@ const movies = [
     },
 ];
 
+function generateSeat(id) {
+    return {
+        id: id,
+    };
+}
+
+function generateSeats(columns, rows, commonId) {
+    let totalOfSeats = columns * rows;
+    let seats = [];
+    let uniqueId;
+    let seatId;
+    for (let i = 0; i < totalOfSeats; i++) {
+        uniqueId = i + 1;
+        seatId = commonId.concat("-").concat(uniqueId.toString());
+        seats[i] = generateSeat(seatId);
+    }
+
+    return {
+        columns: columns,
+        rows: rows,
+        seats: seats,
+    };
+}
+
 const theaters = [
     {
         name: "Theater 1",
-        sists: [
-            {
-                columns: 3,
-                rows: 4,
-                sits: [
-                    { id: "a-1" },
-                    { id: "a-2" },
-                    { id: "a-3" },
-                    { id: "a-4" },
-                    { id: "a-5" },
-                    { id: "a-6" },
-                    { id: "a-7" },
-                    { id: "a-8" },
-                    { id: "a-9" },
-                    { id: "a-10" },
-                    { id: "a-11" },
-                    { id: "a-12" },
-                ],
-            },
-            {
-                columns: 2,
-                rows: 3,
-                sits: [
-                    { id: "b-1" },
-                    { id: "b-2" },
-                    { id: "b-3" },
-                    { id: "b-4" },
-                    { id: "b-5" },
-                    { id: "b-6" },
-                ],
-            },
+        seatingSet: [
+            generateSeats(3, 3, "theater-one-a"),
+            generateSeats(3, 4, "theater-one-b"),
+            generateSeats(2, 1, "theater-one-c"),
+            generateSeats(3, 4, "theater-one-d"),
+            generateSeats(3, 3, "theater-one-e"),
         ],
     },
     {
         name: "Theater 2",
         sists: [
-            {
-                columns: 4,
-                rows: 5,
-                sits: [
-                    { id: "c-1" },
-                    { id: "c-2" },
-                    { id: "c-3" },
-                    { id: "c-4" },
-                    { id: "c-5" },
-                    { id: "c-6" },
-                    { id: "c-7" },
-                    { id: "c-8" },
-                    { id: "c-9" },
-                    { id: "c-10" },
-                    { id: "c-11" },
-                    { id: "c-12" },
-                    { id: "c-13" },
-                    { id: "c-14" },
-                    { id: "c-15" },
-                    { id: "c-16" },
-                ],
-            },
+            generateSeats(3, 3, "theater-two-a"),
+            generateSeats(3, 4, "theater-two-b"),
+            generateSeats(3, 3, "theater-two-c"),
         ],
     },
     {
         name: "Theater 3",
         sists: [
-            {
-                columns: 5,
-                rows: 6,
-                sits: [
-                    { id: "d-1" },
-                    { id: "d-2" },
-                    { id: "d-3" },
-                    { id: "d-4" },
-                    { id: "d-5" },
-                    { id: "d-6" },
-                    { id: "d-7" },
-                    { id: "d-8" },
-                    { id: "d-9" },
-                    { id: "d-10" },
-                    { id: "d-11" },
-                    { id: "d-12" },
-                    { id: "d-13" },
-                    { id: "d-14" },
-                    { id: "d-15" },
-                    { id: "d-16" },
-                    { id: "d-17" },
-                    { id: "d-18" },
-                    { id: "d-19" },
-                    { id: "d-20" },
-                    { id: "d-21" },
-                    { id: "d-22" },
-                ],
-            },
+            generateSeats(5, 6, "theater-three-a"),
+            generateSeats(10, 8, "theater-three-b"),
+            generateSeats(5, 6, "theater-three-c"),
         ],
     },
     {
         name: "Theater 4",
         sists: [
-            {
-                columns: 6,
-                rows: 3,
-                sits: [
-                    { id: "e-1" },
-                    { id: "e-2" },
-                    { id: "e-3" },
-                    { id: "e-4" },
-                    { id: "e-5" },
-                    { id: "e-6" },
-                    { id: "e-7" },
-                    { id: "e-8" },
-                    { id: "e-9" },
-                    { id: "e-10" },
-                    { id: "e-11" },
-                    { id: "e-12" },
-                    { id: "e-13" },
-                    { id: "e-14" },
-                    { id: "e-15" },
-                    { id: "e-16" },
-                    { id: "e-17" },
-                    { id: "e-18" },
-                ],
-            },
+            generateSeats(5, 6, "theater-four-a"),
+            generateSeats(10, 8, "theater-four-b"),
+            generateSeats(2, 1, "theater-four-c"),
+            generateSeats(10, 8, "theater-four-d"),
+            generateSeats(5, 6, "theater-four-e"),
         ],
     },
     {
         name: "Theater 5",
         sists: [
-            {
-                columns: 2,
-                rows: 6,
-                sits: [
-                    { id: "f-1" },
-                    { id: "f-2" },
-                    { id: "f-3" },
-                    { id: "f-4" },
-                    { id: "f-5" },
-                    { id: "f-6" },
-                    { id: "f-7" },
-                    { id: "f-8" },
-                    { id: "f-9" },
-                    { id: "f-10" },
-                    { id: "f-11" },
-                    { id: "f-12" },
-                ],
-            },
+            generateSeats(2, 4, "theater-five-a"),
+            generateSeats(5, 8, "theater-five-b"),
+            generateSeats(2, 1, "theater-five-c"),
+            generateSeats(5, 8, "theater-five-d"),
+            generateSeats(2, 4, "theater-five-e"),
         ],
     },
 ];
+
+function generateDaySchedule(day, movieId) {
+    return {
+        date: day,
+        movieId: movieId,
+    };
+}
+
+function generateDaySchedules(movieIds) {
+    return [
+        generateDaySchedule("2024-10-24", movieIds[0]),
+        generateDaySchedule("2024-10-25", movieIds[1]),
+        generateDaySchedule("2024-10-26", movieIds[2]),
+        generateDaySchedule("2024-10-27", movieIds[3]),
+        generateDaySchedule("2024-10-28", movieIds[4]),
+        generateDaySchedule("2024-10-29", movieIds[5]),
+        generateDaySchedule("2024-11-21", movieIds[6]),
+        generateDaySchedule("2024-11-22", movieIds[7]),
+        generateDaySchedule("2024-11-23", movieIds[8]),
+        generateDaySchedule("2024-11-25", movieIds[9]),
+        generateDaySchedule("2024-11-26", movieIds[10]),
+        generateDaySchedule("2024-11-27", movieIds[11]),
+        generateDaySchedule("2024-12-12", movieIds[12]),
+        generateDaySchedule("2024-12-13", movieIds[13]),
+        generateDaySchedule("2024-12-14", movieIds[14]),
+        generateDaySchedule("2024-12-15", movieIds[15]),
+        generateDaySchedule("2024-12-16", movieIds[16]),
+        generateDaySchedule("2024-12-17", movieIds[17]),
+        generateDaySchedule("2024-12-18", movieIds[18]),
+        generateDaySchedule("2024-12-19", movieIds[19]),
+    ];
+}
+
+function generateHourSchedule(hour, dayScheduleId, theaterId, price) {
+    return {
+        hour: hour,
+        dayScheduleId: dayScheduleId,
+        theaterId: theaterId,
+        price: price,
+        reservedSeats: [],
+        isAvailable: true,
+    };
+}
+
+function generateHourSchedules(scheduleIds, theaterIds) {
+    return [
+        generateHourSchedule("14:00:00", scheduleIds[0], theaterIds[0], 40.1),
+        generateHourSchedule("17:30:00", scheduleIds[0], theaterIds[1], 45.1),
+        generateHourSchedule("21:30:00", scheduleIds[0], theaterIds[2], 46.1),
+
+        generateHourSchedule("14:00:00", scheduleIds[1], theaterIds[1], 40.1),
+        generateHourSchedule("21:30:00", scheduleIds[1], theaterIds[3], 46.1),
+
+        generateHourSchedule("09:30:00", scheduleIds[2], theaterIds[3], 35.5),
+        generateHourSchedule("12:30:00", scheduleIds[2], theaterIds[4], 35.5),
+        generateHourSchedule("17:00:00", scheduleIds[2], theaterIds[0], 35.5),
+
+        generateHourSchedule("09:30:00", scheduleIds[3], theaterIds[0], 45.5),
+        generateHourSchedule("12:30:00", scheduleIds[3], theaterIds[2], 45.9),
+
+        generateHourSchedule("10:30:00", scheduleIds[4], theaterIds[1], 45.5),
+        generateHourSchedule("14:30:00", scheduleIds[4], theaterIds[2], 45.9),
+
+        generateHourSchedule("12:30:00", scheduleIds[5], theaterIds[0], 45.5),
+        generateHourSchedule("17:30:00", scheduleIds[5], theaterIds[3], 45.9),
+
+        generateHourSchedule("11:30:00", scheduleIds[6], theaterIds[1], 45.5),
+        generateHourSchedule("13:30:00", scheduleIds[6], theaterIds[4], 45.9),
+
+        generateHourSchedule("15:30:00", scheduleIds[7], theaterIds[3], 45.5),
+        generateHourSchedule("18:30:00", scheduleIds[7], theaterIds[1], 45.9),
+
+        generateHourSchedule("09:30:00", scheduleIds[8], theaterIds[2], 45.5),
+        generateHourSchedule("12:30:00", scheduleIds[8], theaterIds[3], 45.9),
+
+        generateHourSchedule("10:30:00", scheduleIds[9], theaterIds[2], 45.5),
+        generateHourSchedule("12:30:00", scheduleIds[9], theaterIds[4], 45.9),
+
+        generateHourSchedule("15:30:00", scheduleIds[10], theaterIds[1], 45.5),
+        generateHourSchedule("20:30:00", scheduleIds[10], theaterIds[4], 45.9),
+
+        generateHourSchedule("20:30:00", scheduleIds[11], theaterIds[3], 45.5),
+        generateHourSchedule("21:30:00", scheduleIds[11], theaterIds[0], 45.9),
+
+        generateHourSchedule("10:30:00", scheduleIds[12], theaterIds[2], 45.5),
+        generateHourSchedule("12:30:00", scheduleIds[12], theaterIds[1], 45.9),
+
+        generateHourSchedule("08:30:00", scheduleIds[13], theaterIds[1], 45.5),
+        generateHourSchedule("11:30:00", scheduleIds[13], theaterIds[4], 45.9),
+
+        generateHourSchedule("11:30:00", scheduleIds[14], theaterIds[3], 45.5),
+        generateHourSchedule("10:30:00", scheduleIds[14], theaterIds[0], 45.9),
+
+        generateHourSchedule("11:30:00", scheduleIds[15], theaterIds[2], 45.5),
+        generateHourSchedule("12:30:00", scheduleIds[15], theaterIds[1], 45.9),
+
+        generateHourSchedule("09:30:00", scheduleIds[16], theaterIds[3], 45.5),
+        generateHourSchedule("15:30:00", scheduleIds[16], theaterIds[4], 45.9),
+
+        generateHourSchedule("11:30:00", scheduleIds[17], theaterIds[0], 45.5),
+        generateHourSchedule("18:30:00", scheduleIds[17], theaterIds[1], 45.9),
+
+        generateHourSchedule("13:30:00", scheduleIds[18], theaterIds[0], 45.5),
+        generateHourSchedule("19:30:00", scheduleIds[18], theaterIds[4], 45.9),
+
+        generateHourSchedule("12:30:00", scheduleIds[19], theaterIds[3], 45.5),
+        generateHourSchedule("20:30:00", scheduleIds[19], theaterIds[0], 45.9),
+    ];
+}
 
 db = db.getSiblingDB("ddd");
 
 const movieIds = db.movies.insertMany(movies).insertedIds;
 const theaterIds = db.theaters.insertMany(theaters).insertedIds;
 
-const schedules = [
-    {
-        date: "2024-10-24",
-        movieId: movieIds[0],
-    },
-    {
-        date: "2024-10-25",
-        movieId: movieIds[1],
-    },
-    {
-        date: "2024-10-26",
-        movieId: movieIds[2],
-    },
-    {
-        date: "2024-10-27",
-        movieId: movieIds[3],
-    },
-    {
-        date: "2024-10-28",
-        movieId: movieIds[4],
-    },
-];
+const schedules = generateDaySchedules(movieIds);
 
 const scheduleIds = db.schedules.insertMany(schedules).insertedIds;
 
-const hours = [
-    {
-        hour: "14:00:00",
-        dayScheduleId: scheduleIds[0],
-        theaterId: theaterIds[0],
-        price: 40.1,
-        reservedSeats: [],
-        isAvailable: true,
-    },
-    {
-        hour: "17:30:00",
-        dayScheduleId: scheduleIds[0],
-        theaterId: theaterIds[0],
-        price: 40.1,
-        reservedSeats: [],
-        isAvailable: true,
-    },
-    {
-        hour: "21:00:00",
-        dayScheduleId: scheduleIds[0],
-        theaterId: theaterIds[0],
-        price: 40.1,
-        reservedSeats: [],
-        isAvailable: true,
-    },
-    {
-        hour: "15:00:00",
-        dayScheduleId: scheduleIds[1],
-        theaterId: theaterIds[1],
-        price: 35.5,
-        reservedSeats: [],
-        isAvailable: true,
-    },
-    {
-        hour: "18:30:00",
-        dayScheduleId: scheduleIds[1],
-        theaterId: theaterIds[1],
-        price: 35.5,
-        reservedSeats: [],
-        isAvailable: true,
-    },
-    {
-        hour: "22:00:00",
-        dayScheduleId: scheduleIds[1],
-        theaterId: theaterIds[1],
-        price: 35.5,
-        reservedSeats: [],
-        isAvailable: true,
-    },
-    {
-        hour: "12:00:00",
-        dayScheduleId: scheduleIds[2],
-        theaterId: theaterIds[2],
-        price: 30.0,
-        reservedSeats: [],
-        isAvailable: true,
-    },
-    {
-        hour: "16:15:00",
-        dayScheduleId: scheduleIds[2],
-        theaterId: theaterIds[2],
-        price: 30.0,
-        reservedSeats: [],
-        isAvailable: true,
-    },
-    {
-        hour: "20:30:00",
-        dayScheduleId: scheduleIds[2],
-        theaterId: theaterIds[2],
-        price: 30.0,
-        reservedSeats: [],
-        isAvailable: true,
-    },
-];
+const hours = generateHourSchedules(scheduleIds, theaterIds);
 
 db.hours.insertMany(hours);
