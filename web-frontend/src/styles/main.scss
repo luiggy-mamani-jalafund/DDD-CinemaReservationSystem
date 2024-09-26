@@ -1,0 +1,19 @@
+// main.scss
+
+@import 'globals.scss';
+
+// Importar variables globales (colores, tipografías, etc.)
+@import 'themes/_variables.scss';
+
+// Importar el reset de estilos para normalizar los estilos en diferentes navegadores
+@import 'base/_reset.scss';
+
+// Importar estilos de layout si tienes un diseño global o grillas
+@import 'layout/_layout.scss';
+
+// Importar los módulos de componentes
+@import 'modules/_button.module.scss';
+@import 'modules/_page.module.scss';
+
+// Si tienes otros estilos que se aplican en diferentes partes
+@import 'other/_other.scss';

@@ -1,14 +1,13 @@
 "use client";
 
 import React from 'react';
-import styles from '../../styles/modules/_button.module.scss';
 import Image from 'next/image';
 
 const Button = ({ label, onClick, type = 'button', className = '', disabled = false, icon }) => {
     return (
         <button
             type={type}
-            className={`${styles.button} ${className}`}
+            className={`button ${className}`}
             onClick={onClick}
             disabled={disabled}
         >

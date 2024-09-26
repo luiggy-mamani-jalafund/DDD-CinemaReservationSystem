@@ -1,16 +1,14 @@
 "use client";
 
 import Image from 'next/image';
-import styles from '../styles/modules/_page.module.scss';
 import Button from '../components/atoms/Button.js';
-import stylesbutton from '../styles/modules/_button.module.scss';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
+    <div className="page">
+      <main className="main">
         <Image
-          className={styles.logo}
+          className="logo"
           src="https://nextjs.org/icons/next.svg"
           alt="Next.js logo"
           width={180}
@@ -24,21 +22,40 @@ export default function Home() {
           <li>Save and see your changes instantly.</li>
         </ol>
 
-        <div className={styles.ctas}>
+        <h1 className="primary primary-font">Save and see your changes instantly</h1>
+        <h1 className="primary secondary-font">Save and see your changes instantly</h1>
+        <h1 className="secondary primary-font">Save and see your changes instantly</h1>
+        <h1 className="secondary secondary-font">Save and see your changes instantly</h1>
+
+        <h2 className="secondary secondary-font">-------</h2>
+          
+        <h2 className="primary primary-font">Save and see your changes instantly</h2>
+        <h2 className="primary secondary-font">Save and see your changes instantly</h2>
+        <h2 className="secondary primary-font">Save and see your changes instantly</h2>
+        <h2 className="secondary secondary-font">Save and see your changes instantly</h2>
+
+        <h2 className="secondary secondary-font">-------</h2>
+
+        <p className="primary primary-font">Save and see your changes instantly</p>
+        <p className="primary secondary-font">Save and see your changes instantly</p>
+        <p className="secondary primary-font">Save and see your changes instantly</p>
+        <p className="secondary secondary-font">Save and see your changes instantly</p>
+
+        <div className="ctas">
           <Button 
-            label="Deploy now" 
+            label="Everyone has the right" 
             icon="https://nextjs.org/icons/vercel.svg"
             onClick={() => window.open("https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app", "_blank")} 
-            className={stylesbutton.primary}
+            className="primary"
           />
           <Button 
             label="Read our docs" 
             onClick={() => window.open("https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app", "_blank")} 
-            className={stylesbutton.secondary}
+            className="secondary"
           />
         </div>
       </main>
-      <footer className={styles.footer}>
+      <footer className="footer">
         <a
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           target="_blank"
