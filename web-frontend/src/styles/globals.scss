@@ -1,0 +1,14 @@
+@import 'themes/_variables.scss';
+@import 'base/_reset.scss';
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('/fonts/Quicksand-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('/fonts/Quicksand-Light.ttf') format('truetype');
+  font-weight: normal;
+}

@@ -1,0 +1,85 @@
+@import '../themes/_variables.scss';
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #{$color-primary-black};
+    --foreground: #{$color-primary-white};
+    --font: #{$font-family};
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  font-size: $parrafo-font-size;
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+.primary {
+  color: $color-primary-yellow;
+
+  &.primary-font {
+    font-family: var(--font);
+    font-weight: bold;
+  }
+
+  &.secondary-font {
+    font-family: var(--font);
+    font-weight: normal;
+  }
+}
+
+.secondary {
+  color: var(--foreground);
+
+  &.primary-font {
+    font-family: var(--font);
+    font-weight: bold;
+  }
+
+  &.secondary-font {
+    font-family: var(--font);
+    font-weight: normal;
+  }
+}
+
+h1 {
+  font-size: $titulo-font-size;
+  line-height: 120%;
+}
+
+
+h2 {
+  font-size: $subtitulo-font-size;
+  line-height: 120%;
+}
+
+p {
+  font-size: $parrafo-font-size;
+  color: var(--foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
