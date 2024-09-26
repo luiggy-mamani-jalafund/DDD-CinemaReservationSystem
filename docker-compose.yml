@@ -4,10 +4,9 @@ services:
 
   mongo:
     image: mongo
-    ports:
-      - 27017:27017
+    restart: on-failure
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
       - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
