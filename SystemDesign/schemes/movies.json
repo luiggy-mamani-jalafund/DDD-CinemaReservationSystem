@@ -1,6 +1,6 @@
 [
     {
-        "id": "some-id",
+        "_id": "some-id",
         "title": "string",
         "description": "string",
         "image": "string",
