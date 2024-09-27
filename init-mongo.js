@@ -6,6 +6,7 @@ const movies = [
         image: "https://m.media-amazon.com/images/M/MV5BMTM0MjUzNjkwMl5BMl5BanBnXkFtZTcwNjY0OTk1Mw@@._V1_.jpg",
         duration: 148,
         genre: "Science Fiction",
+        isActive: true,
     },
     {
         title: "The Godfather",
@@ -14,6 +15,7 @@ const movies = [
         image: "https://m.media-amazon.com/images/M/MV5BYTJkNGQyZDgtZDQ0NC00MDM0LWEzZWQtYzUzZDEwMDljZWNjXkEyXkFqcGc@._V1_.jpg",
         duration: 175,
         genre: "Crime",
+        isActive: true,
     },
     {
         title: "The Shawshank Redemption",
@@ -22,6 +24,7 @@ const movies = [
         image: "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_.jpg",
         duration: 142,
         genre: "Drama",
+        isActive: true,
     },
     {
         title: "Pulp Fiction",
@@ -30,6 +33,7 @@ const movies = [
         image: "https://es.web.img3.acsta.net/img/05/66/05663f00b8b5df58b003aaf5c46ef8ad.jpg",
         duration: 154,
         genre: "Crime",
+        isActive: true,
     },
     {
         title: "The Dark Knight",
@@ -38,6 +42,7 @@ const movies = [
         image: "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg",
         duration: 152,
         genre: "Action",
+        isActive: true,
     },
     {
         title: "Forrest Gump",
@@ -46,6 +51,7 @@ const movies = [
         image: "https://m.media-amazon.com/images/S/pv-target-images/f9ddd832d1b566f5b8dd29a4dbc76b7531c420c8c8d9fdfe94eca128bda8e2b1.jpg",
         duration: 142,
         genre: "Drama",
+        isActive: true,
     },
     {
         title: "Interstellar",
@@ -54,6 +60,7 @@ const movies = [
         image: "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_.jpg",
         duration: 169,
         genre: "Science Fiction",
+        isActive: true,
     },
     {
         title: "The Matrix",
@@ -62,6 +69,7 @@ const movies = [
         image: "https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_.jpg",
         duration: 136,
         genre: "Action",
+        isActive: true,
     },
     {
         title: "Gladiator",
@@ -70,6 +78,7 @@ const movies = [
         image: "https://www.originalfilmart.com/cdn/shop/products/gladiator_2000_teaser_original_film_art_5000x.jpg?v=1610420463",
         duration: 155,
         genre: "Action",
+        isActive: true,
     },
     {
         title: "Titanic",
@@ -78,86 +87,97 @@ const movies = [
         image: "https://m.media-amazon.com/images/M/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_.jpg",
         duration: 195,
         genre: "Romance",
+        isActive: true,
     },
     {
         title: "Avatar",
         description:
-            "En un mundo alienígena, un exmarine se infiltra en una tribu nativa y se encuentra dividido entre dos mundos.",
+            "On an alien world, an ex-marine infiltrates a native tribe and finds himself torn between two worlds.",
         image: "https://es.web.img3.acsta.net/pictures/22/08/30/12/42/0535062.jpg",
         duration: 162,
         genre: "Ciencia ficción",
+        isActive: true,
     },
     {
         title: "Fight Club",
         description:
-            "Un hombre desilusionado crea un club de lucha clandestino como una forma de encontrar un sentido a su vida.",
+            "A disillusioned man creates an underground fight club as a way to find meaning in his life.",
         image: "https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_.jpg",
         duration: 139,
         genre: "Drama",
+        isActive: true,
     },
     {
         title: "The Silence of the Lambs",
         description:
-            "Una joven agente del FBI busca la ayuda de un asesino en serie encarcelado para atrapar a otro asesino suelto.",
+            "A young FBI agent seeks the help of an imprisoned serial killer to catch another killer on the loose.",
         image: "https://s3.amazonaws.com/criterion-production/films/46014912ca0c20592c472f5bbe33e4f8/L9AQ95Y7z2vOIUf1ntwvpZsZx3kp8B_original.jpg",
         duration: 138,
         genre: "Thriller",
+        isActive: true,
     },
     {
         title: "Saving Private Ryan",
         description:
-            "Un grupo de soldados se embarca en una misión para rescatar a un paracaidista tras el desembarco de Normandía.",
+            "A group of soldiers embark on a mission to rescue a paratrooper after the Normandy landings.",
         image: "https://m.media-amazon.com/images/M/MV5BZGZhZGQ1ZWUtZTZjYS00MDJhLWFkYjctN2ZlYjE5NWYwZDM2XkEyXkFqcGc@._V1_.jpg",
         duration: 169,
         genre: "Guerra",
+        isActive: true,
     },
     {
         title: "Jurassic Park",
         description:
-            "Un parque temático que alberga dinosaurios clonados se convierte en una pesadilla cuando los animales escapan.",
+            "A theme park housing cloned dinosaurs turns into a nightmare when the animals escape.",
         image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/f00bf346385235.58520f9022451.jpg",
         duration: 127,
         genre: "Aventura",
+        isActive: true,
     },
     {
         title: "The Social Network",
         description:
-            "La historia de la creación de Facebook y las disputas legales que surgieron entre sus fundadores.",
+            "The story of the creation of Facebook and the legal disputes that arose between its founders.",
         image: "https://www.videoexpress.be/wp-content/uploads/2019/05/kuq7PstzRa7Sau4DzXvuaKw3zY8.jpg",
         duration: 120,
         genre: "Biografía",
+        isActive: true,
     },
     {
         title: "The Lion King",
         description:
-            "La historia de un joven león que debe reclamar su lugar como rey después de la muerte de su padre.",
+            "The story of a young lion who must reclaim his place as king after the death of his father.",
         image: "https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_FMjpg_UX1000_.jpg",
         duration: 88,
         genre: "Animación",
+        isActive: true,
     },
     {
         title: "WALL-E",
         description:
-            "Un pequeño robot de limpieza en un futuro desolado se embarca en una aventura que podría salvar el planeta.",
+            "A tiny cleaning robot in a bleak future embarks on an adventure that could save the planet.",
         image: "https://m.media-amazon.com/images/M/MV5BMjExMTg5OTU0NF5BMl5BanBnXkFtZTcwMjMxMzMzMw@@._V1_.jpg",
         duration: 98,
         genre: "Animación",
+        isActive: true,
     },
     {
         title: "Schindler's List",
         description:
-            "Un empresario alemán salva a más de mil judíos durante el Holocausto creando una lista de trabajadores esenciales.",
+            "German businessman saves over 1,000 Jews during Holocaust by creating list of essential workers",
         image: "https://m.media-amazon.com/images/M/MV5BNjM1ZDQxYWUtMzQyZS00MTE1LWJmZGYtNGUyNTdlYjM3ZmVmXkEyXkFqcGc@._V1_.jpg",
         duration: 195,
         genre: "Historia",
+        isActive: true,
     },
     {
         title: "The Avengers",
         description:
-            "Un grupo de superhéroes se une para enfrentar a una amenaza que pone en peligro al mundo.",
+            "A group of superheroes unite to face a threat that endangers the world.",
         image: "https://files.ekmcdn.com/allwallpapers/images/mural-wallpaper-avengers-movie-poster-37221-1-p.jpg",
         duration: 143,
         genre: "Acción",
+        isActive: true,
     },
 ];
 
@@ -198,7 +218,7 @@ const theaters = [
     },
     {
         name: "Theater 2",
-        sists: [
+        seatingSet: [
             generateSeats(3, 3, "theater-two-a"),
             generateSeats(3, 4, "theater-two-b"),
             generateSeats(3, 3, "theater-two-c"),
@@ -206,7 +226,7 @@ const theaters = [
     },
     {
         name: "Theater 3",
-        sists: [
+        seatingSet: [
             generateSeats(5, 6, "theater-three-a"),
             generateSeats(10, 8, "theater-three-b"),
             generateSeats(5, 6, "theater-three-c"),
@@ -214,7 +234,7 @@ const theaters = [
     },
     {
         name: "Theater 4",
-        sists: [
+        seatingSet: [
             generateSeats(5, 6, "theater-four-a"),
             generateSeats(10, 8, "theater-four-b"),
             generateSeats(2, 1, "theater-four-c"),
@@ -224,7 +244,7 @@ const theaters = [
     },
     {
         name: "Theater 5",
-        sists: [
+        seatingSet: [
             generateSeats(2, 4, "theater-five-a"),
             generateSeats(5, 8, "theater-five-b"),
             generateSeats(2, 1, "theater-five-c"),
