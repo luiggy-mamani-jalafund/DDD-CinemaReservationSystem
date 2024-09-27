@@ -1,0 +1,5 @@
+# gloabl sln .net
+*.sln
+
+# database
+database

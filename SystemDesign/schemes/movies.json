@@ -1,10 +1,11 @@
 [
     {
-        "id": "some-id",
+        "_id": "some-id",
         "title": "string",
         "description": "string",
         "image": "string",
         "duration": 50,
-        "genre": "string"
+        "genre": "string",
+        "isActive": true
     }
 ]
