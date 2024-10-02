@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Infraestructure.Repositories.Abstractions;
+using MongoDB.Bson;
 
 namespace Controllers.Concrete;
 
@@ -26,5 +27,23 @@ public class MovieController : ControllerBase
     {
         var movies = _movieRepository.GetAllMovies();
         return Ok(movies);
+    }
+
+    [HttpGet("{movieId}")]
+    public IActionResult GetMovieById(string movieId)
+    {
+        if (!ObjectId.TryParse(movieId, out _))
+        {
+            return BadRequest("Invalid movie ID.");
+        }
+
+        var movie = _movieRepository.GetMovieById(movieId);
+
+        if (movie == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(movie);
     }
 }

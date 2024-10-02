@@ -7,4 +7,6 @@ public interface IMovieRepository
     List<Movie> GetActiveMovies();
 
     List<Movie> GetAllMovies();
+
+    Movie? GetMovieById(string movieId);
 }
