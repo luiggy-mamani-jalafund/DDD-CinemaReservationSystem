@@ -9,6 +9,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<DatabaseConfig>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<IShowtimeRepository, ShowtimeRepository>();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
