@@ -183,7 +183,7 @@ const movies = [
 
 function generateSeat(id) {
     return {
-        id: id,
+        seatId: id,
     };
 }
 
