@@ -1,36 +1,23 @@
 using Infraestructure.Data;
-using Infraestructure.Repositories;
-using Infraestructure.Repositories.Abstractions;
+using Infraestructure.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddSingleton<DatabaseConfig>();
-builder.Services.AddScoped<IMovieRepository, MovieRepository>();
-builder.Services.AddScoped<IShowtimeRepository, ShowtimeRepository>();
-
 builder.Services.AddControllers();
+builder.Services.InjectDependencies();
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1");
-        options.RoutePrefix = String.Empty;
-    });
+    app.UseSwaggerUI(SwaggerConfigurator.ConfigureSwaggerUI);
 }
 
 app.UseRouting();
-
-app.UseEndpoints(endpoints =>
-{
-    _ = endpoints.MapControllers();
-});
-
+app.MapControllers();
 app.Run();

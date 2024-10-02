@@ -20,12 +20,15 @@ public class MovieRepository : IMovieRepository
     {
         var filter = Builders<Movie>.Filter.Eq(m => m.IsActive, true);
         var activeMovies = _movieCollection.Find(filter).ToList();
+        
         return activeMovies;
     }
 
     public List<Movie> GetAllMovies()
     {
-        return _movieCollection.Find(d => true).ToList();
+        var allMovies = _movieCollection.Find(d => true);
+
+        return allMovies.ToList();
     }
 
     public Movie? GetMovieById(string movieId)
