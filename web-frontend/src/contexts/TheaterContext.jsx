@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect} from "react";
 
 export const TheaterContext = createContext();
 
@@ -25,7 +25,7 @@ const TheaterProvider = ({ children }) => {
     const selectSeat = (seat) => {
         setTheaterState((prev) => ({
             ...prev,
-            seatsOccupied: [...prev.seatsOccupied, seat],
+            selectedSeats: [...prev.selectedSeats, seat],
         }));
     };
 

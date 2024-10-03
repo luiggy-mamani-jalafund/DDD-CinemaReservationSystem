@@ -12,7 +12,7 @@ const TheaterSeat = ({ seat }) => {
             return;
         }
 
-        if (SEAT_STATE === "selected") {
+        if (SEAT_STATE === "free") {
             selectSeat(seat);
         } else {
             deselectSeat(seat);
