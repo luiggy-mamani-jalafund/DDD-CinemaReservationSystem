@@ -4,10 +4,14 @@ import React, { useEffect, useState } from 'react';
 import MoviePoster from '@/components/molecules/movies/MoviePoster';
 import MovieInfo from '@/components/molecules/movies/MovieInfo';
 import MovieSchedule from '@/components/molecules/movies/MovieSchedule';
+import Link from 'next/link';
 
 const MovieDetails = ({ movie, showtimes }) => {
     const [selectedDay, setSelectedDay] = useState(null);
     const [selectedSchedule, setSelectedSchedule] = useState(null);
+    const [selectedScheduleObj, setSelectedScheduleObj] = useState(null);
+    const hourScheduleSerialized = selectedScheduleObj 
+                ? encodeURIComponent(JSON.stringify(selectedScheduleObj)) : ""
 
     useEffect(() => {
         if (showtimes && showtimes.length > 0) {
@@ -29,8 +33,9 @@ const MovieDetails = ({ movie, showtimes }) => {
         }
     };
 
-    const handleScheduleClick = (hour) => {
-        setSelectedSchedule(prevHour => (prevHour === hour ? null : hour));
+    const handleScheduleClick = (hourObj) => {
+        setSelectedScheduleObj(prev => (prev?.id === hourObj.id ? null : hourObj))
+        setSelectedSchedule(prevHour => (prevHour === hourObj.showtime ? null : hourObj.showtime));
     };
 
     return (
@@ -49,7 +54,15 @@ const MovieDetails = ({ movie, showtimes }) => {
                     handleDayClick={handleDayClick}
                     handleScheduleClick={handleScheduleClick}
                 />
-                <button className="continueButton">Continue</button>
+                <Link 
+                    className="continueButton" 
+                    href={{
+                        pathname: `/theater`,
+                        query: {schedule: hourScheduleSerialized}
+                    }}
+                >
+                    Continue
+                </Link>
             </div>
         </section>
     );
