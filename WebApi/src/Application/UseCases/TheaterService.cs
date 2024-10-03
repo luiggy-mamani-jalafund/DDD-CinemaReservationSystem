@@ -1,4 +1,6 @@
+using Domain;
 using WebApi.src.Application.UseCaseAbstractions;
+using WebApi.src.Application.Utils;
 using WebApi.src.Domain.Entities.Theaters;
 using WebApi.src.Domain.Repositories;
 
@@ -18,5 +20,24 @@ public class TheaterService : ITheaterService
         var theater = _theaterRepository.GetById(theaterId);
 
         return theater;
+    }
+
+    public List<Seat> GetOccupiedSeats(List<SeatingSet> seatingSet, List<string> reservedSeats)
+    {
+        var occupiedSeats = new List<Seat>();
+
+        foreach (var reservedSeat in reservedSeats)
+        {
+            foreach (var singleSeatingSet in seatingSet)
+            {
+                var seatFound = SeatAvailabilityChecker.FindSeatByIdOnSectionTheater(singleSeatingSet, reservedSeat);
+                if (seatFound is not null)
+                {
+                    occupiedSeats.Add(seatFound);
+                }
+            }
+        }
+
+        return occupiedSeats;
     }
 }
