@@ -10,7 +10,7 @@ const DeafultState = {
 };
 
 const SeatState = {
-    ocupied: "ocupied",
+    occupied: "occupied",
     selected: "selected",
     free: "free",
 };
@@ -48,7 +48,7 @@ const TheaterProvider = ({ children }) => {
 
     const getSeatState = (seat) => {
         if (isSeatOccupied(seat)) {
-            return SeatState.ocupied;
+            return SeatState.occupied;
         }
 
         if (isSeatSelected(seat)) {
