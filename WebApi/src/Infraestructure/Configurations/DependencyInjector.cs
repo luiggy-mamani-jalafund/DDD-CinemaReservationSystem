@@ -1,9 +1,9 @@
 using Infraestructure.Repositories;
 using Infraestructure.Repositories.Abstractions;
-using WebApi.src.Application.UseCaseAbstractions;
-using WebApi.src.Application.UseCases;
+using Application.UseCaseAbstractions;
+using Application.UseCases;
 
-namespace WebApi.src.Infraestructure.Configurations;
+namespace Infraestructure.Configurations;
 
 public static class DependencyInjector
 {
@@ -16,6 +16,7 @@ public static class DependencyInjector
     private static void InjectRepositories(IServiceCollection services)
     {
         services.AddScoped<IMovieRepository, MovieRepository>();
+        services.AddScoped<IShowtimeRepository, ShowtimeRepository>();
     }
 
     private static void InjectServices(IServiceCollection services)

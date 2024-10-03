@@ -1,0 +1,18 @@
+@import '../themes/_variables.scss';
+
+.movieInfo {
+    text-align: center;
+    margin-top: 20px;
+
+    .movieTitle {
+        font-size: $titulo-font-size;
+        color: $color-primary-yellow;
+        margin-bottom: 10px;
+    }
+
+    .movieDescription {
+        font-size: $subtitulo-font-size;
+        color: $color-primary-white;
+        margin-bottom: 20px;
+    }
+}

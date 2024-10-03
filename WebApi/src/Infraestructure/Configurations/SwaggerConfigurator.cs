@@ -1,6 +1,6 @@
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-namespace WebApi.src.Infraestructure.Configurations;
+namespace Infraestructure.Configurations;
 
 public static class SwaggerConfigurator
 {

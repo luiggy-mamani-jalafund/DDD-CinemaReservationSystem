@@ -1,7 +1,8 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.src.Application.UseCaseAbstractions;
-using WebApi.src.Infraestructure.Dtos;
+using Application.UseCaseAbstractions;
+using Infraestructure.Dtos;
+using MongoDB.Bson;
 
 namespace Controllers.Concrete;
 
@@ -26,4 +27,23 @@ public class MovieController : ControllerBase
 
         return Ok(moviesResponse);
     }
+
+    [HttpGet("{movieId}")]
+    public IActionResult GetMovieById(string movieId)
+    {
+        if (!ObjectId.TryParse(movieId, out _))
+        {
+            return BadRequest("Invalid movie ID.");
+        }
+
+        var movie = _movieBillboardService.GetMovieById(movieId);
+
+        if (movie == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(movie);
+    }
+
 }

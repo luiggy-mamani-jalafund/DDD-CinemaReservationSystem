@@ -31,4 +31,10 @@ public class MovieRepository : IMovieRepository
         return allMovies.ToList();
     }
 
+    public Movie? GetMovieById(string movieId)
+    {
+        var filter = Builders<Movie>.Filter.Eq(m => m.Id, movieId);
+        return _movieCollection.Find(filter).FirstOrDefault();
+    }
+
 }

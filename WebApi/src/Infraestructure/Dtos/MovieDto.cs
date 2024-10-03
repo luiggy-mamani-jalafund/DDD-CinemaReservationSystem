@@ -1,4 +1,4 @@
-namespace WebApi.src.Infraestructure.Dtos;
+namespace Infraestructure.Dtos;
 
 public record MovieDto(
     string Id,

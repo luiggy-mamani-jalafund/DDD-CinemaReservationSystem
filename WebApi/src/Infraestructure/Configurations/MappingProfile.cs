@@ -1,8 +1,8 @@
 using AutoMapper;
 using Domain;
-using WebApi.src.Infraestructure.Dtos;
+using Infraestructure.Dtos;
 
-namespace WebApi.src.Infraestructure.Configurations;
+namespace Infraestructure.Configurations;
 
 public class MappingProfile : Profile
 {

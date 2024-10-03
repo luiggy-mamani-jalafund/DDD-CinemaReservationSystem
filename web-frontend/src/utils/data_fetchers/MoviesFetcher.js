@@ -1,19 +1,20 @@
 export async function fetchSingleMovie(movieId) {
-    return {
-        _id: "somemovieid",
-        title: "Inception",
-        description:
-            "A thief who steals secrets from dreams is offered the chance to erase his past as payment for a job he must do.",
-        image: "https://m.media-amazon.com/images/M/MV5BMTM0MjUzNjkwMl5BMl5BanBnXkFtZTcwNjY0OTk1Mw@@._V1_.jpg",
-        duration: 148,
-        genre: "Science Fiction",
-        isActive: true,
-    };
+    const response = await fetch(`http://localhost:5011/api/movies/${movieId.id}`);
+    const movie = await response.json();
+    
+    return movie;
 }
 
 export async function fetchAvailableMovies() {
-    const response = await fetch("http://localhost:5011/api/Movie/active");
+    const response = await fetch("http://localhost:5011/api/movies/active");
     const movies = await response.json();
     
     return movies
+}
+
+export async function fetchMovieShowtimes(movieId) {
+    const response = await fetch(`http://localhost:5011/api/showtime/${movieId.id}`);
+    const showtimes = await response.json();
+    
+    return showtimes;
 }

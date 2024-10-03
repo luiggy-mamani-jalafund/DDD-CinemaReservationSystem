@@ -1,8 +1,8 @@
 using Domain;
 using Infraestructure.Repositories.Abstractions;
-using WebApi.src.Application.UseCaseAbstractions;
+using Application.UseCaseAbstractions;
 
-namespace WebApi.src.Application.UseCases;
+namespace Application.UseCases;
 
 public class MovieBillboardService : IMovieBillboardService
 {
@@ -13,8 +13,16 @@ public class MovieBillboardService : IMovieBillboardService
         _movieRepository = movieRepository;
     }
 
-    public List<Movie> GetActiveMovies() {
+    public List<Movie> GetActiveMovies()
+    {
         var movies = _movieRepository.GetActiveMovies();
+
+        return movies;
+    }
+
+    public Movie? GetMovieById(string movieId)
+    {
+        var movies = _movieRepository.GetMovieById(movieId);
 
         return movies;
     }
