@@ -286,80 +286,87 @@ function generateDaySchedules(movieIds) {
     ];
 }
 
-function generateHourSchedule(hour, dayScheduleId, theaterId, price) {
+function getRandomSeatIds(theater, maxSeats = 15) {
+    const allSeats = theater.seatingSet.flatMap(set => set.seats.map(seat => seat.seatId));
+    const shuffledSeats = allSeats.sort(() => Math.random() - 0.5);
+    
+    return shuffledSeats.slice(0, maxSeats);
+}
+
+function generateHourSchedule(hour, dayScheduleId, theaterId, theater, price) {
     return {
         hour: hour,
         dayScheduleId: dayScheduleId,
         theaterId: theaterId,
         price: price,
-        reservedSeats: [],
+        reservedSeats: getRandomSeatIds(theater, 15),
         isAvailable: true,
     };
 }
 
-function generateHourSchedules(scheduleIds, theaterIds) {
+function generateHourSchedules(scheduleIds, theaterIds, theaters) {
     return [
-        generateHourSchedule("14:00:00", scheduleIds[0], theaterIds[0], 40.1),
-        generateHourSchedule("17:30:00", scheduleIds[0], theaterIds[1], 45.1),
-        generateHourSchedule("21:30:00", scheduleIds[0], theaterIds[2], 46.1),
+        generateHourSchedule("14:00:00", scheduleIds[0], theaterIds[0], theaters[0], 40.1),
+        generateHourSchedule("17:30:00", scheduleIds[0], theaterIds[1], theaters[1], 45.1),
+        generateHourSchedule("21:30:00", scheduleIds[0], theaterIds[2], theaters[2], 46.1),
 
-        generateHourSchedule("14:00:00", scheduleIds[1], theaterIds[1], 40.1),
-        generateHourSchedule("21:30:00", scheduleIds[1], theaterIds[3], 46.1),
+        generateHourSchedule("14:00:00", scheduleIds[1], theaterIds[1], theaters[1], 40.1),
+        generateHourSchedule("21:30:00", scheduleIds[1], theaterIds[3], theaters[3], 46.1),
 
-        generateHourSchedule("09:30:00", scheduleIds[2], theaterIds[3], 35.5),
-        generateHourSchedule("12:30:00", scheduleIds[2], theaterIds[4], 35.5),
-        generateHourSchedule("17:00:00", scheduleIds[2], theaterIds[0], 35.5),
+        generateHourSchedule("09:30:00", scheduleIds[2], theaterIds[3], theaters[3], 35.5),
+        generateHourSchedule("12:30:00", scheduleIds[2], theaterIds[4], theaters[4], 35.5),
+        generateHourSchedule("17:00:00", scheduleIds[2], theaterIds[0], theaters[0], 35.5),
 
-        generateHourSchedule("09:30:00", scheduleIds[3], theaterIds[0], 45.5),
-        generateHourSchedule("12:30:00", scheduleIds[3], theaterIds[2], 45.9),
+        generateHourSchedule("09:30:00", scheduleIds[3], theaterIds[0], theaters[0], 45.5),
+        generateHourSchedule("12:30:00", scheduleIds[3], theaterIds[2], theaters[2], 45.9),
 
-        generateHourSchedule("10:30:00", scheduleIds[4], theaterIds[1], 45.5),
-        generateHourSchedule("14:30:00", scheduleIds[4], theaterIds[2], 45.9),
+        generateHourSchedule("10:30:00", scheduleIds[4], theaterIds[1], theaters[1], 45.5),
+        generateHourSchedule("14:30:00", scheduleIds[4], theaterIds[2], theaters[2], 45.9),
 
-        generateHourSchedule("12:30:00", scheduleIds[5], theaterIds[0], 45.5),
-        generateHourSchedule("17:30:00", scheduleIds[5], theaterIds[3], 45.9),
+        generateHourSchedule("12:30:00", scheduleIds[5], theaterIds[0], theaters[0], 45.5),
+        generateHourSchedule("17:30:00", scheduleIds[5], theaterIds[3], theaters[3], 45.9),
 
-        generateHourSchedule("11:30:00", scheduleIds[6], theaterIds[1], 45.5),
-        generateHourSchedule("13:30:00", scheduleIds[6], theaterIds[4], 45.9),
+        generateHourSchedule("11:30:00", scheduleIds[6], theaterIds[1], theaters[1], 45.5),
+        generateHourSchedule("13:30:00", scheduleIds[6], theaterIds[4], theaters[4], 45.9),
 
-        generateHourSchedule("15:30:00", scheduleIds[7], theaterIds[3], 45.5),
-        generateHourSchedule("18:30:00", scheduleIds[7], theaterIds[1], 45.9),
+        generateHourSchedule("15:30:00", scheduleIds[7], theaterIds[3], theaters[3], 45.5),
+        generateHourSchedule("18:30:00", scheduleIds[7], theaterIds[1], theaters[1], 45.9),
 
-        generateHourSchedule("09:30:00", scheduleIds[8], theaterIds[2], 45.5),
-        generateHourSchedule("12:30:00", scheduleIds[8], theaterIds[3], 45.9),
+        generateHourSchedule("09:30:00", scheduleIds[8], theaterIds[2], theaters[2], 45.5),
+        generateHourSchedule("12:30:00", scheduleIds[8], theaterIds[3], theaters[3], 45.9),
 
-        generateHourSchedule("10:30:00", scheduleIds[9], theaterIds[2], 45.5),
-        generateHourSchedule("12:30:00", scheduleIds[9], theaterIds[4], 45.9),
+        generateHourSchedule("10:30:00", scheduleIds[9], theaterIds[2], theaters[2], 45.5),
+        generateHourSchedule("12:30:00", scheduleIds[9], theaterIds[4], theaters[4], 45.9),
 
-        generateHourSchedule("15:30:00", scheduleIds[10], theaterIds[1], 45.5),
-        generateHourSchedule("20:30:00", scheduleIds[10], theaterIds[4], 45.9),
+        generateHourSchedule("15:30:00", scheduleIds[10], theaterIds[1], theaters[1], 45.5),
+        generateHourSchedule("20:30:00", scheduleIds[10], theaterIds[4], theaters[4], 45.9),
 
-        generateHourSchedule("20:30:00", scheduleIds[11], theaterIds[3], 45.5),
-        generateHourSchedule("21:30:00", scheduleIds[11], theaterIds[0], 45.9),
+        generateHourSchedule("20:30:00", scheduleIds[11], theaterIds[3], theaters[3], 45.5),
+        generateHourSchedule("21:30:00", scheduleIds[11], theaterIds[0], theaters[0], 45.9),
 
-        generateHourSchedule("10:30:00", scheduleIds[12], theaterIds[2], 45.5),
-        generateHourSchedule("12:30:00", scheduleIds[12], theaterIds[1], 45.9),
+        generateHourSchedule("10:30:00", scheduleIds[12], theaterIds[2], theaters[2], 45.5),
+        generateHourSchedule("12:30:00", scheduleIds[12], theaterIds[1], theaters[1], 45.9),
 
-        generateHourSchedule("08:30:00", scheduleIds[13], theaterIds[1], 45.5),
-        generateHourSchedule("11:30:00", scheduleIds[13], theaterIds[4], 45.9),
+        generateHourSchedule("08:30:00", scheduleIds[13], theaterIds[1], theaters[1], 45.5),
+        generateHourSchedule("11:30:00", scheduleIds[13], theaterIds[4], theaters[4], 45.9),
 
-        generateHourSchedule("11:30:00", scheduleIds[14], theaterIds[3], 45.5),
-        generateHourSchedule("10:30:00", scheduleIds[14], theaterIds[0], 45.9),
+        generateHourSchedule("11:30:00", scheduleIds[14], theaterIds[3], theaters[3], 45.5),
+        generateHourSchedule("10:30:00", scheduleIds[14], theaterIds[0], theaters[0], 45.9),
 
-        generateHourSchedule("11:30:00", scheduleIds[15], theaterIds[2], 45.5),
-        generateHourSchedule("12:30:00", scheduleIds[15], theaterIds[1], 45.9),
+        generateHourSchedule("11:30:00", scheduleIds[15], theaterIds[2], theaters[2], 45.5),
+        generateHourSchedule("12:30:00", scheduleIds[15], theaterIds[1], theaters[1], 45.9),
 
-        generateHourSchedule("09:30:00", scheduleIds[16], theaterIds[3], 45.5),
-        generateHourSchedule("15:30:00", scheduleIds[16], theaterIds[4], 45.9),
+        generateHourSchedule("09:30:00", scheduleIds[16], theaterIds[3], theaters[3], 45.5),
+        generateHourSchedule("15:30:00", scheduleIds[16], theaterIds[4], theaters[4], 45.9),
 
-        generateHourSchedule("11:30:00", scheduleIds[17], theaterIds[0], 45.5),
-        generateHourSchedule("18:30:00", scheduleIds[17], theaterIds[1], 45.9),
+        generateHourSchedule("11:30:00", scheduleIds[17], theaterIds[0], theaters[0], 45.5),
+        generateHourSchedule("18:30:00", scheduleIds[17], theaterIds[1], theaters[1], 45.9),
 
-        generateHourSchedule("13:30:00", scheduleIds[18], theaterIds[0], 45.5),
-        generateHourSchedule("19:30:00", scheduleIds[18], theaterIds[4], 45.9),
+        generateHourSchedule("13:30:00", scheduleIds[18], theaterIds[0], theaters[0], 45.5),
+        generateHourSchedule("19:30:00", scheduleIds[18], theaterIds[4], theaters[4], 45.9),
 
-        generateHourSchedule("12:30:00", scheduleIds[19], theaterIds[3], 45.5),
-        generateHourSchedule("20:30:00", scheduleIds[19], theaterIds[0], 45.9),
+        generateHourSchedule("12:30:00", scheduleIds[19], theaterIds[3], theaters[3], 45.5),
+        generateHourSchedule("20:30:00", scheduleIds[19], theaterIds[0], theaters[0], 45.9),
     ];
 }
 
@@ -372,6 +379,6 @@ const schedules = generateDaySchedules(movieIds);
 
 const scheduleIds = db.schedules.insertMany(schedules).insertedIds;
 
-const hours = generateHourSchedules(scheduleIds, theaterIds);
+const hours = generateHourSchedules(scheduleIds, theaterIds, theaters);
 
 db.hours.insertMany(hours);
