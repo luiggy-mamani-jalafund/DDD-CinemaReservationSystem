@@ -1,6 +1,8 @@
 using AutoMapper;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.src.Application.UseCaseAbstractions;
+using WebApi.src.Domain.Entities.Theaters;
 using WebApi.src.Infraestructure.Dtos.TheatersDtos;
 
 namespace Controllers.Concrete;
@@ -33,4 +35,30 @@ public class TheaterController : ControllerBase
             return StatusCode(500, $"Internal server error: {exception.Message}");
         }
     }
+
+    [HttpPost("occupiedseats")]
+    public IActionResult GetOccupiedSeats([FromBody] RequestForOccupiedSeats requestForOccupiedSeats)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var seatingSet = _mapper.Map<List<SeatingSet>>(requestForOccupiedSeats.SeatingSet);
+
+        try
+        {
+            var occupiedSeats = _theaterService.GetOccupiedSeats(
+                    seatingSet,
+                    requestForOccupiedSeats.ReservedSeats
+                );
+
+            return Ok(occupiedSeats);
+        }
+        catch (Exception exception)
+        {
+            return StatusCode(500, $"Internal server error: {exception.Message}");
+        }
+    }
+
 }
