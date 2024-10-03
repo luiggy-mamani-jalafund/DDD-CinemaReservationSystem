@@ -11,7 +11,7 @@ const MovieDetails = ({ movie, showtimes }) => {
     const [selectedSchedule, setSelectedSchedule] = useState(null);
     const [selectedScheduleObj, setSelectedScheduleObj] = useState(null);
     const hourScheduleSerialized = selectedScheduleObj 
-                ? encodeURIComponent(JSON.stringify(selectedScheduleObj)) : ""
+                ? encodeURIComponent(JSON.stringify(selectedScheduleObj)) : "";
 
     useEffect(() => {
         if (showtimes && showtimes.length > 0) {
@@ -20,6 +20,7 @@ const MovieDetails = ({ movie, showtimes }) => {
             });
             setSelectedDay(firstDay);
             setSelectedSchedule(showtimes[0].hours[0].showtime);
+            setSelectedScheduleObj(showtimes[0].hours[0]);
         }
     }, [showtimes]);
 
@@ -30,11 +31,15 @@ const MovieDetails = ({ movie, showtimes }) => {
         );
         if (newSchedule) {
             setSelectedSchedule(newSchedule.hours[0].showtime);
+            setSelectedScheduleObj(newSchedule.hours[0]);
+        } else {
+            setSelectedSchedule(null);
+            setSelectedScheduleObj(null);
         }
     };
 
     const handleScheduleClick = (hourObj) => {
-        setSelectedScheduleObj(prev => (prev?.id === hourObj.id ? null : hourObj))
+        setSelectedScheduleObj(prev => (prev?.id === hourObj.id ? null : hourObj));
         setSelectedSchedule(prevHour => (prevHour === hourObj.showtime ? null : hourObj.showtime));
     };
 
@@ -54,15 +59,18 @@ const MovieDetails = ({ movie, showtimes }) => {
                     handleDayClick={handleDayClick}
                     handleScheduleClick={handleScheduleClick}
                 />
-                <Link 
-                    className="continueButton" 
-                    href={{
-                        pathname: `/theater`,
-                        query: {schedule: hourScheduleSerialized}
-                    }}
-                >
-                    Continue
-                </Link>
+                
+                {selectedDay && selectedSchedule && (
+                    <Link 
+                        className="continueButton"
+                        href={{
+                            pathname: `/theater`,
+                            query: { schedule: hourScheduleSerialized }
+                        }}
+                    >
+                        Continue
+                    </Link>
+                )}
             </div>
         </section>
     );
