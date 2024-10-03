@@ -67,6 +67,14 @@ const TheaterProvider = ({ children }) => {
         return SeatState.free;
     };
 
+    const getTotalPrice = () => {
+        if (!theaterState.schedule || !theaterState.schedule.price) {
+            return 0;
+        }
+
+        return theaterState.schedule.price * theaterState.selectedSeats.length;
+    };
+
     const values = {
         theaterState,
         schedule: theaterState.schedule,
@@ -80,6 +88,7 @@ const TheaterProvider = ({ children }) => {
         selectSeat,
         deselectSeat,
         getSeatState,
+        getTotalPrice
     };
 
     return (
