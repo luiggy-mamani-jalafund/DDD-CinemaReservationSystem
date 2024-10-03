@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import MoviePoster from '@/components/molecules/movies/MoviePoster';
+import MovieInfo from '@/components/molecules/movies/MovieInfo';
+import MovieSchedule from '@/components/molecules/movies/MovieSchedule';
 
 const MovieDetails = ({ movie, showtimes }) => {
     const [selectedDay, setSelectedDay] = useState(null);
@@ -31,73 +34,22 @@ const MovieDetails = ({ movie, showtimes }) => {
     };
 
     return (
-        <section className="movie-details">
+        <section className="movieDetails">
             <div
-                className="background-image-container"
-                style={{
-                    backgroundImage: `url(${movie.image})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat'
-                }}
+                className="backgroundImageContainer"
+                style={{ backgroundImage: `url(${movie.image})` }}
             />
-            <div className="content-container">
-                <div className="movie-poster">
-                    <img src={movie.image} alt={`Poster de ${movie.title}`} />
-                </div>
-                <div className="movie-info">
-                    <h1 className="movie-title">{movie.title}</h1>
-                    <p className="movie-description">{movie.description}</p>
-
-                    <div className="movie-schedule">
-                        <h3>Días</h3>
-                        <div className="days">
-                            {showtimes && showtimes.length > 0 ? (
-                                showtimes.map((schedule, index) => {
-                                    const day = new Date(schedule.date).toLocaleDateString("es-ES", {
-                                        day: '2-digit'
-                                    });
-                                    return (
-                                        <div
-                                            key={index}
-                                            className={`day ${selectedDay === day ? 'selected' : ''}`}
-                                            onClick={() => handleDayClick(day)}
-                                        >
-                                            {day}
-                                        </div>
-                                    );
-                                })
-                            ) : (
-                                <p>There are no days available.</p>
-                            )}
-                        </div>
-
-                        <h3>Horarios</h3>
-                        <div className="schedules">
-                            {showtimes && showtimes.length > 0 ? (
-                                showtimes.flatMap(schedule =>
-                                    schedule.hours.map((hour, index) => {
-                                        const day = new Date(schedule.date).toLocaleDateString("es-ES", { day: '2-digit' });
-                                        return selectedDay === day ? (
-                                            <div
-                                                key={index}
-                                                className={`schedule-time ${selectedSchedule === hour.showtime ? 'selected' : ''}`}
-                                                onClick={() => handleScheduleClick(hour.showtime)}
-                                            >
-                                                {hour.showtime}
-                                                {" - " + hour.price + " Bs."}
-                                            </div>
-                                        ) : null;
-                                    })
-                                )
-                            ) : (
-                                <p>There are no available times.</p>
-                            )}
-                        </div>
-                    </div>
-
-                    <button className="continue-button">Continue</button>
-                </div>
+            <div className="contentContainer">
+                <MoviePoster image={movie.image} title={movie.title} />
+                <MovieInfo title={movie.title} description={movie.description} />
+                <MovieSchedule 
+                    showtimes={showtimes} 
+                    selectedDay={selectedDay} 
+                    selectedSchedule={selectedSchedule}
+                    handleDayClick={handleDayClick}
+                    handleScheduleClick={handleScheduleClick}
+                />
+                <button className="continueButton">Continue</button>
             </div>
         </section>
     );

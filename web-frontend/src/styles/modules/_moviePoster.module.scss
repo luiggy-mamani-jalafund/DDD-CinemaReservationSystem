@@ -1,0 +1,10 @@
+@import '../themes/_variables.scss';
+
+.moviePoster {
+    img {
+        width: 350px;
+        height: 530px;
+        border-radius: 15px;
+        box-shadow: $color-primary-gray;
+    }
+}

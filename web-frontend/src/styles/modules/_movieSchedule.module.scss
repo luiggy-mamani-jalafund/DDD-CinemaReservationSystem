@@ -1,0 +1,73 @@
+@import '../themes/_variables.scss';
+
+@mixin selected-hover-styles {
+    background-color: $color-primary-yellow;
+    color: $color-primary-black;
+
+    &:hover {
+        background-color: $color-primary-yellow;
+        color: $color-primary-black;
+    }
+}
+
+.movieSchedule {
+    width: 100%;
+
+    h2 {
+        margin-bottom: 20px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .days {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        font-size: $titulo-font-size;
+
+        .day {
+            color: $color-primary-yellow;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                @include selected-hover-styles;
+            }
+
+            &.selected {
+                @include selected-hover-styles;
+            }
+        }
+    }
+
+    .schedules {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        font-size: $parrafo-font-size;
+
+        .scheduleTime {
+            background-color: transparent;
+            color: $color-primary-yellow;
+            padding: 10px 20px;
+            border: 2px solid $color-primary-yellow;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            &:hover {
+                @include selected-hover-styles;
+            }
+
+            &.selected {
+                @include selected-hover-styles;
+            }
+        }
+    }
+}
