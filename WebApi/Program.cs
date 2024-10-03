@@ -1,5 +1,5 @@
 using Infraestructure.Data;
-using WebApi.src.Infraestructure.Configurations;
+using Infraestructure.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 

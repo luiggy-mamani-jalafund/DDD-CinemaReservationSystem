@@ -33,3 +33,36 @@
     font-weight: 500;
     font-size: 1.25rem;
 }
+
+@media (max-width: 423px) {
+    .movie-card-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 93%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 376px) {
+    .movie-card-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 83%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 358px) {
+    .movie-card-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 75%;
+        height: 100%;
+        object-fit: cover;
+    }
+}

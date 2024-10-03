@@ -1,10 +1,10 @@
 using AutoMapper;
 using Domain;
 using WebApi.src.Domain.Entities.Theaters;
-using WebApi.src.Infraestructure.Dtos;
 using WebApi.src.Infraestructure.Dtos.TheatersDtos;
+using Infraestructure.Dtos;
 
-namespace WebApi.src.Infraestructure.Configurations;
+namespace Infraestructure.Configurations;
 
 public class MappingProfile : Profile
 {

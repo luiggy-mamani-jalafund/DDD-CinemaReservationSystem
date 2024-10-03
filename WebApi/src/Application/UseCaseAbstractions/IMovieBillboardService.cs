@@ -1,8 +1,10 @@
 using Domain;
 
-namespace WebApi.src.Application.UseCaseAbstractions;
+namespace Application.UseCaseAbstractions;
 
 public interface IMovieBillboardService
 {
     public List<Movie> GetActiveMovies();
+
+    public Movie? GetMovieById(string movieId);
 }

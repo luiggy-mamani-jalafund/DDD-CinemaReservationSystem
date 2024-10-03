@@ -2,19 +2,26 @@
 
 @import 'globals.scss';
 
-// Importar variables globales (colores, tipografías, etc.)
+// Import global variables (colors, fonts, etc.)
 @import 'themes/_variables.scss';
 
-// Importar el reset de estilos para normalizar los estilos en diferentes navegadores
+// Import style reset to normalize styles across different browsers
 @import 'base/_reset.scss';
 
-// Importar estilos de layout si tienes un diseño global o grillas
+// Import layout styles if you have a global layout or grids
 @import 'layout/_layout.scss';
 
-// Importar los módulos de componentes
+// Import the component modules
 @import 'modules/_button.module.scss';
 @import 'modules/_page.module.scss';
 @import 'modules/_text.module.scss';
 
-// Si tienes otros estilos que se aplican en diferentes partes
+// If you have other styles that apply in different parts
 @import 'other/_other.scss';
+
+
+// Import movie modules
+@import 'modules/_movieDetails.module.scss';
+@import 'modules/_moviePoster.module.scss';
+@import 'modules/_movieInfo.module.scss';
+@import 'modules/_movieSchedule.module.scss';
