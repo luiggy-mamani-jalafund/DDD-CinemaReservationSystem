@@ -4,6 +4,7 @@ import { createContext, useState } from "react";
 export const TheaterContext = createContext();
 
 const DeafultState = {
+    schedule: undefined,
     theater: undefined,
     selectedSeats: [],
     seatsOccupied: [],
@@ -20,6 +21,10 @@ const TheaterProvider = ({ children }) => {
 
     const setTheater = (theater) => {
         setTheaterState((prev) => ({ ...prev, theater }));
+    };
+
+    const setSchedule = (schedule) => {
+        setTheaterState((prev) => ({ ...prev, schedule }));
     };
 
     const selectSeat = (seat) => {
@@ -64,11 +69,13 @@ const TheaterProvider = ({ children }) => {
 
     const values = {
         theaterState,
+        schedule: theaterState.schedule,
         theater: theaterState.theater,
         selectedSeats: theaterState.selectedSeats,
         seatsOccupied: theaterState.seatsOccupied,
         setSeatsOccupied,
         setTheater,
+        setSchedule,
         setTheaterState,
         selectSeat,
         deselectSeat,
