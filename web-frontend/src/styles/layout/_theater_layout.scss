@@ -1,0 +1,73 @@
+@property --seat-size {
+    syntax: "*";
+    inherits: true;
+    initial-value: 27px;
+}
+
+@property --space-seats {
+    syntax: "*";
+    inherits: true;
+    initial-value: 18px;
+}
+
+.main-theater-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100dvh;
+}
+
+.theater-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-seats);
+
+    padding: 30px;
+}
+
+.theater-seating-set-wrapper {
+    display: grid;
+    grid-auto-rows: var(--seat-size);
+    gap: var(--space-seats);
+    align-content: end;
+}
+
+.seat {
+    border: none;
+    border-radius: 6px;
+    background-color: #514438;
+    cursor: pointer;
+}
+
+.type-seat {
+    width: var(--seat-size);
+    height: var(--seat-size);
+    background-color: #514438;
+    border-radius: 6px;
+}
+
+:is(.seat, .type-seat)[data-state="occupied"] {
+    background-color: #ffb500;
+}
+
+:is(.seat, .type-seat)[data-state="selected"] {
+    background-color: #7a6ce6;
+}
+
+.seat:hover {
+    transform: scale(1.2);
+}
+
+.type-seat-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-weight: 900;
+}
+
+.type-seat-wrapper.dup-space {
+    gap: 40px;
+}
