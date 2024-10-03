@@ -39,7 +39,7 @@ const Theater = () => {
             <button
                 className={`continueButton | ${totalPrice <= 0 && "hidden"}`}
             >
-                Buy seats {totalPrice} Bs
+                Buy seats {Math.round(totalPrice)} Bs
             </button>
         </main>
     );
