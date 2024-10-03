@@ -1,13 +1,17 @@
 "use client";
 import { useEffect, useContext } from "react";
 import { TheaterContext } from "@/contexts/TheaterContext";
-import { getTheaterById } from "@/utils/data_fetchers/TheaterFetcher";
+import {
+    getTheaterById,
+    getSeatsOccupied,
+} from "@/utils/data_fetchers/TheaterFetcher";
 import { useRouter } from "next/navigation";
 import SeatingSetRenderer from "./SeatingSetRenderer";
 
 const TheaterRenderer = ({ theaterId }) => {
     const router = useRouter();
-    const { theater, setTheater } = useContext(TheaterContext);
+    const { theater, setTheater, setSeatsOccupied } =
+        useContext(TheaterContext);
 
     useEffect(() => {
         getTheaterById(theaterId)
@@ -17,11 +21,18 @@ const TheaterRenderer = ({ theaterId }) => {
             .catch((_) => {
                 router.back();
             });
-    }, []);
+    }, [theaterId]);
 
     useEffect(() => {
         if (theater) {
-            // TODO: fetch occupied state
+            // TODO: fetch schedule from context, query, fetching, etc
+            getSeatsOccupied(undefined, theater)
+                .then((seatsOccupied) => {
+                    setSeatsOccupied(seatsOccupied);
+                })
+                .catch((_) => {
+                    router.back();
+                });
         }
     }, [theater]);
 

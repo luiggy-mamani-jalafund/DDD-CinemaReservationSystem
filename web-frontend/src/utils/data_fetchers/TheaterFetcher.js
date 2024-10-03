@@ -1,3 +1,29 @@
+export async function getSeatsOccupied(schedule, theater) {
+    return [
+        {
+            seatId: "theater-four-a-1",
+        },
+        {
+            seatId: "theater-four-a-2",
+        },
+        {
+            seatId: "theater-four-a-10",
+        },
+        {
+            seatId: "theater-four-a-11",
+        },
+        {
+            seatId: "theater-four-a-12",
+        },
+        {
+            seatId: "theater-four-b-74",
+        },
+        {
+            seatId: "theater-four-b-75",
+        },
+    ];
+}
+
 export async function getTheaterById(theaterId) {
     return {
         _id: theaterId,

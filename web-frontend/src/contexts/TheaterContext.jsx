@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useState, useEffect} from "react";
+import { createContext, useState } from "react";
 
 export const TheaterContext = createContext();
 
@@ -32,10 +32,14 @@ const TheaterProvider = ({ children }) => {
     const deselectSeat = (seat) => {
         setTheaterState((prev) => ({
             ...prev,
-            seatsOccupied: prev.seatsOccupied.filter(
+            selectedSeats: prev.selectedSeats.filter(
                 (selectedSeat) => selectedSeat.seatId !== seat.seatId,
             ),
         }));
+    };
+
+    const setSeatsOccupied = (seatsOccupied) => {
+        setTheaterState((prev) => ({ ...prev, seatsOccupied }));
     };
 
     const isSeatOccupied = (seat) => {
@@ -63,6 +67,7 @@ const TheaterProvider = ({ children }) => {
         theater: theaterState.theater,
         selectedSeats: theaterState.selectedSeats,
         seatsOccupied: theaterState.seatsOccupied,
+        setSeatsOccupied,
         setTheater,
         setTheaterState,
         selectSeat,
