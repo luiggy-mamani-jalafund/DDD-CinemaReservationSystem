@@ -7,7 +7,7 @@ using MongoDB.Bson;
 namespace Controllers.Concrete;
 
 [ApiController]
-[Route("api/movies")]
+[Route("api/Movies")]
 public class MovieController : ControllerBase
 {
     private readonly IMapper _mapper;

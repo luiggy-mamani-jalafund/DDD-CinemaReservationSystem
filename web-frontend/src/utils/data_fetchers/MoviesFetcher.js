@@ -1,6 +1,6 @@
 export async function fetchSingleMovie(movieId) {
     const response = await fetch(
-        `http://localhost:5011/api/movies/${movieId.id}`,
+        `http://localhost:5011/api/Movies/${movieId.id}`,
     );
     const movie = await response.json();
 
@@ -8,7 +8,7 @@ export async function fetchSingleMovie(movieId) {
 }
 
 export async function fetchAvailableMovies() {
-    const response = await fetch("http://localhost:5011/api/movies/active");
+    const response = await fetch("http://localhost:5011/api/Movies/active");
     const movies = await response.json();
 
     return movies;
@@ -16,7 +16,7 @@ export async function fetchAvailableMovies() {
 
 export async function fetchMovieShowtimes(movieId) {
     const response = await fetch(
-        `http://localhost:5011/api/showtime/${movieId.id}`,
+        `http://localhost:5011/api/Showtime/${movieId.id}`,
     );
     const showtimes = await response.json();
 
