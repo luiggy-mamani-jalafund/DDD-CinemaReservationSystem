@@ -11,7 +11,8 @@ import { useEffect, useContext } from "react";
 const Theater = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const { schedule, setSchedule } = useContext(TheaterContext);
+    const { schedule, setSchedule, getTotalPrice } = useContext(TheaterContext);
+    const totalPrice = getTotalPrice();
 
     useEffect(() => {
         const scheduleParam = searchParams.get("schedule");
@@ -35,6 +36,11 @@ const Theater = () => {
             <div className="theater-screen-text">screen</div>
             <TheaterRenderer theaterId={schedule.theaterId} />
             <TypesSeatState />
+            <button
+                className={`continueButton | ${totalPrice <= 0 && "hidden"}`}
+            >
+                Buy seats {totalPrice} Bs
+            </button>
         </main>
     );
 };
