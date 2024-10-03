@@ -10,7 +10,7 @@ import SeatingSetRenderer from "./SeatingSetRenderer";
 
 const TheaterRenderer = ({ theaterId }) => {
     const router = useRouter();
-    const { theater, setTheater, setSeatsOccupied } =
+    const { theater, setTheater, setSeatsOccupied, schedule } =
         useContext(TheaterContext);
 
     useEffect(() => {
@@ -24,9 +24,8 @@ const TheaterRenderer = ({ theaterId }) => {
     }, [theaterId]);
 
     useEffect(() => {
-        if (theater) {
-            // TODO: fetch schedule from context, query, fetching, etc
-            getSeatsOccupied(undefined, theater)
+        if (theater && schedule) {
+            getSeatsOccupied(schedule, theater)
                 .then((seatsOccupied) => {
                     setSeatsOccupied(seatsOccupied);
                 })
@@ -34,7 +33,7 @@ const TheaterRenderer = ({ theaterId }) => {
                     router.back();
                 });
         }
-    }, [theater]);
+    }, [theater, schedule]);
 
     if (!theater) {
         return <span>loading...</span>;
