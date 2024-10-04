@@ -32,7 +32,7 @@ const MovieSchedule = ({ showtimes, selectedDay, selectedSchedule, handleDayClic
                             <div
                                 key={index}
                                 className={`scheduleTime ${selectedSchedule === hour.showtime ? 'selected' : ''}`}
-                                onClick={() => handleScheduleClick(hour.showtime)}
+                                onClick={() => handleScheduleClick(hour)}
                             >
                                 {hour.showtime} - {hour.price} Bs.
                             </div>

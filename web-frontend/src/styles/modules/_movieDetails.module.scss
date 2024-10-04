@@ -28,20 +28,27 @@
         max-width: 800px;
         margin: 0 auto;
     }
+    
+}
 
-    .continueButton {
-        background-color: $color-primary-yellow;
-        font-weight: bold;
-        color: $color-primary-black;
-        border: none;
-        padding: 10px 20px;
-        font-size: $subtitulo-font-size;
-        cursor: pointer;
-        border-radius: 5px;
-        margin-top: 20px;
+.continueButton {
+    background-color: $color-primary-yellow;
+    font-weight: bold;
+    color: $color-primary-black;
+    border: none;
+    padding: 10px 20px;
+    font-size: $subtitulo-font-size;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: all ease 200ms;
 
-        &:hover {
-            background-color: #b79303;
-        }
+    &:hover {
+        background-color: #b79303;
+    }
+
+    &.hidden {
+        opacity: 0;
+        pointer-events: none;
     }
 }
