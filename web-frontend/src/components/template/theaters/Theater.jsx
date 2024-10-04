@@ -1,6 +1,7 @@
 "use client";
 
 import TypesSeatState from "@/components/molecules/theaters/TypesSeatState";
+import PurchaseForm from "@/components/organisms/purchases/PurchaseForm";
 import TheaterRenderer from "@/components/organisms/theaters/TheaterRenderer";
 import { TheaterContext } from "@/contexts/TheaterContext";
 import "@/styles/layout/_theater_layout.scss";
@@ -11,8 +12,7 @@ import { useEffect, useContext } from "react";
 const Theater = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const { schedule, setSchedule, getTotalPrice } = useContext(TheaterContext);
-    const totalPrice = getTotalPrice();
+    const { schedule, setSchedule } = useContext(TheaterContext);
 
     useEffect(() => {
         const scheduleParam = searchParams.get("schedule");
@@ -36,11 +36,7 @@ const Theater = () => {
             <div className="theater-screen-text">screen</div>
             <TheaterRenderer theaterId={schedule.theaterId} />
             <TypesSeatState />
-            <button
-                className={`continueButton | ${totalPrice <= 0 && "hidden"}`}
-            >
-                Buy seats {Math.round(totalPrice)} Bs
-            </button>
+            <PurchaseForm />
         </main>
     );
 };
