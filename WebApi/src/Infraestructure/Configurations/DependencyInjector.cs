@@ -6,6 +6,7 @@ using WebApi.src.Domain.Repositories;
 using WebApi.src.Infraestructure.Repositories;
 using Application.UseCaseAbstractions;
 using Application.UseCases;
+using Domain.Repositories;
 
 namespace Infraestructure.Configurations;
 
@@ -22,6 +23,7 @@ public static class DependencyInjector
         services.AddScoped<IMovieRepository, MovieRepository>();
         services.AddScoped<ITheaterRepository, TheaterRepository>();
         services.AddScoped<IShowtimeRepository, ShowtimeRepository>();
+        services.AddScoped<IPurchaseRepository, PurchaseRepository>();
     }
 
     private static void InjectServices(IServiceCollection services)

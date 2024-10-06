@@ -370,6 +370,19 @@ function generateHourSchedules(scheduleIds, theaterIds, theaters) {
     ];
 }
 
+const purchase =
+    [{
+        hourScheduleId: null,
+        reservedSeats: [],
+        createdAt: null,
+        client: {
+            ci: null,
+            fullName: null,
+            email: null,
+    },
+}];
+
+
 db = db.getSiblingDB("ddd");
 
 const movieIds = db.movies.insertMany(movies).insertedIds;
@@ -380,5 +393,7 @@ const schedules = generateDaySchedules(movieIds);
 const scheduleIds = db.schedules.insertMany(schedules).insertedIds;
 
 const hours = generateHourSchedules(scheduleIds, theaterIds, theaters);
+
+const purchaseIds = db.purchase.insertMany(purchase).insertedIds;
 
 db.hours.insertMany(hours);
