@@ -38,4 +38,16 @@ public class ShowtimeRepository : IShowtimeRepository
             Hours = GetHoursByScheduleId(schedule.Id)
         }).ToList<object>();
     }
+
+    public Hour GetHourById(string hourId)
+    {
+        var filter = Builders<Hour>.Filter.Eq(h => h.Id, hourId);
+        return _hourCollection.Find(filter).FirstOrDefault();
+    }
+
+    public void UpdateHour(Hour hour)
+    {
+        var filter = Builders<Hour>.Filter.Eq(h => h.Id, hour.Id);
+        _hourCollection.ReplaceOne(filter, hour);
+    }
 }

@@ -1,13 +1,11 @@
 [
     {
         "id": "some-id",
-        "dayScheduleId": "some-id",
         "hourScheduleId": "some-id",
-        "theaterId": "some-id",
         "reservedSeats": ["b-19", "b-20", "b-21"],
+        "createdAt": "dd-mm-yyyy",
         "client": {
             "ci": 123123121,
-            "createdAt": "dd-mm-yyyy",
             "fullName": "name",
             "email": "someemail"
         }
