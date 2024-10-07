@@ -1,10 +1,10 @@
 import Theater from "@/components/template/theaters/Theater";
 import TheaterProvider from "@/contexts/TheaterContext";
 
-const Page = ({}) => {
-        return (
+const Page = () => {
+    return (
         <TheaterProvider>
-            <Theater/>
+            <Theater />
         </TheaterProvider>
     );
 };

@@ -4,7 +4,7 @@ using Infraestructure.Repositories.Abstractions;
 namespace Controllers.Concrete;
 
 [ApiController]
-[Route("api/Showtime")]
+[Route("api/[controller]")]
 public class ShowtimeController : ControllerBase
 {
     private readonly IShowtimeRepository _showtimeRepository;

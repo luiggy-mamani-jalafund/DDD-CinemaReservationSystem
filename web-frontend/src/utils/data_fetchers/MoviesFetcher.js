@@ -1,6 +1,6 @@
 export async function fetchSingleMovie(movieId) {
     const response = await fetch(
-        `http://localhost:5011/api/Movies/${movieId.id}`,
+        `http://localhost:5011/api/Movie/${movieId}`,
     );
     const movie = await response.json();
 
@@ -16,7 +16,7 @@ export async function fetchAvailableMovies() {
 
 export async function fetchMovieShowtimes(movieId) {
     const response = await fetch(
-        `http://localhost:5011/api/Showtime/${movieId.id}`,
+        `http://localhost:5011/api/Showtime/${movieId}`,
     );
     const showtimes = await response.json();
 
