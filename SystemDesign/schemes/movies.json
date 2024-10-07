@@ -1,0 +1,11 @@
+[
+    {
+        "_id": "some-id",
+        "title": "string",
+        "description": "string",
+        "image": "string",
+        "duration": 50,
+        "genre": "string",
+        "isActive": true
+    }
+]

@@ -1,0 +1,21 @@
+.wrapper {
+    padding: 0 4.375rem;
+}
+
+@media (max-width: 509px) {
+    .wrapper {
+        padding: 0 1.375rem;
+    }
+}
+
+@media (max-width: 376px) {
+    .wrapper {
+        padding: 0 1.875rem;
+    }
+}
+
+@media (max-width: 358px) {
+    .wrapper {
+        padding: 0 1.275rem;
+    }
+}

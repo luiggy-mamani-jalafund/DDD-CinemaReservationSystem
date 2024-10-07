@@ -1,0 +1,27 @@
+.theater-screen {
+    position: relative;
+
+    width: 80%;
+    padding: 30px;
+
+    margin-inline: auto;
+    background-color: aliceblue;
+    clip-path: polygon(
+        50% 0%,
+        74% 10%,
+        100% 31%,
+        100% 61%,
+        68% 32%,
+        49% 28%,
+        27% 36%,
+        0 60%,
+        0 36%,
+        26% 10%
+    );
+
+}
+
+.theater-screen-text {
+    color: white;
+    font-weight: 900;
+}

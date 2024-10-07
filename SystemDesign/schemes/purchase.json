@@ -1,0 +1,13 @@
+[
+    {
+        "id": "some-id",
+        "hourScheduleId": "some-id",
+        "reservedSeats": ["b-19", "b-20", "b-21"],
+        "createdAt": "dd-mm-yyyy",
+        "client": {
+            "ci": 123123121,
+            "fullName": "name",
+            "email": "someemail"
+        }
+    }
+]
