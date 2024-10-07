@@ -4,6 +4,7 @@ import { fetchSingleMovie, fetchMovieShowtimes } from "@/utils/data_fetchers/Mov
 export default async function MoviePage({ params }) {
     const movie = await fetchSingleMovie(params.id);
     const showtimes = await fetchMovieShowtimes(params.id);
+    console.log(showtimes);
 
     return (
         <div>

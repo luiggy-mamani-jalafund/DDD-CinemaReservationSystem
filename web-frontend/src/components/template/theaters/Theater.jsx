@@ -6,26 +6,31 @@ import TheaterRenderer from "@/components/organisms/theaters/TheaterRenderer";
 import { TheaterContext } from "@/contexts/TheaterContext";
 import "@/styles/layout/_theater_layout.scss";
 import "@/styles/other/_theater_items.scss";
+import { fetchMovieShowtimes } from "@/utils/data_fetchers/MoviesFetcher";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useContext } from "react";
 
-const Theater = () => {
+const Theater = ({ movieId, hourId }) => {
     const router = useRouter();
-    const searchParams = useSearchParams();
     const { schedule, setSchedule } = useContext(TheaterContext);
 
     useEffect(() => {
-        const scheduleParam = searchParams.get("schedule");
-
-        if (scheduleParam) {
-            try {
-                const parsedSchedule = JSON.parse(scheduleParam);
-                setSchedule(parsedSchedule);                
-            } catch (_) {
+        fetchMovieShowtimes(movieId)
+            .then((res) => {
+                for (let i = 0; i < res.length; i++) {
+                    for (let j = 0; j < res[i].hours.length; j++) {
+                        if (res[i].hours[j].id === hourId) {
+                            console.log(res[i].hours[j]);
+                            setSchedule(res[i].hours[j]);
+                        }
+                    }
+                }
+            })
+            .catch((exception) => {
+                console.log(exception);
                 router.back();
-            }
-        }
-    }, [searchParams]);
+            });
+    }, [movieId, hourId]);
 
     if (!schedule) return <p>Loading...</p>;
 

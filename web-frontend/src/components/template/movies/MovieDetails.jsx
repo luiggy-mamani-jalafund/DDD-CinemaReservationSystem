@@ -10,12 +10,6 @@ const MovieDetails = ({ movie, showtimes }) => {
     const [selectedDay, setSelectedDay] = useState(null);
     const [selectedSchedule, setSelectedSchedule] = useState(null);
     const [selectedScheduleObj, setSelectedScheduleObj] = useState(null);
-    const hourScheduleSerialized = selectedScheduleObj
-        ? JSON.stringify(selectedScheduleObj)
-        : "";
-    /* const hourScheduleSerialized = selectedScheduleObj
-        ? `schedule=${encodeURIComponent(JSON.stringify(selectedScheduleObj))}`
-        : ""; */
 
     useEffect(() => {
         if (showtimes && showtimes.length > 0) {
@@ -80,10 +74,7 @@ const MovieDetails = ({ movie, showtimes }) => {
                 {selectedDay && selectedSchedule && (
                     <Link
                         className="continueButton"
-                        href={{
-                            pathname: "/theater",
-                            query: { schedule: hourScheduleSerialized },
-                        }}
+                        href={`/movies/${movie.id}/theater/${selectedScheduleObj.id}`}
                     >
                         Continue
                     </Link>

@@ -8,7 +8,7 @@ using Infraestructure.Repositories.Abstractions;
 namespace Controllers;
 
 [ApiController]
-[Route("api/Purchase")]
+[Route("api/[controller]")]
 public class PurchaseController : ControllerBase
 {
     private readonly IMapper _mapper;

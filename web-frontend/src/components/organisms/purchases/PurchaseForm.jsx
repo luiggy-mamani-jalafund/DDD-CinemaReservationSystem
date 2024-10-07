@@ -10,15 +10,16 @@ import CvcPurchase from "@/components/molecules/purchases/CvcPurchase";
 import DueDateCardPurchase from "@/components/molecules/purchases/DueDateCardPurchase";
 import Popup from "../Popup";
 import { TheaterContext } from "@/contexts/TheaterContext";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { purchase } from "@/utils/data_fetchers/PurchaseFetcher";
 
 const PurchaseForm = () => {
     const { schedule, selectedSeats, getTotalPrice } =
         useContext(TheaterContext);
     const router = useRouter();
-    const pathname = usePathname();
     const totalPrice = getTotalPrice();
     const [isBuying, setBuying] = useState(false);
+    const [wasBought, setBought] = useState(false);
 
     const [formData, setFormData] = useState({
         fullName: "",
@@ -54,21 +55,6 @@ const PurchaseForm = () => {
         };
     };
 
-    const updateTheater = () => {
-        let updatedSchedule = {
-            ...schedule,
-            reservedSeats: [
-                ...schedule.reservedSeats,
-                ...selectedSeats.map((seat) => seat.seatId),
-            ],
-        };
-
-        const queryString = objectToQueryString(updatedSchedule);
-        let newUrl = `${pathname}?${queryString}`;
-        window.history.replaceState({}, "", newUrl);
-        router.refresh();
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (loading) {
@@ -83,22 +69,36 @@ const PurchaseForm = () => {
         }
 
         try {
-            updateTheater();
+            await purchase(formToPurchaseObj());
+            router.refresh();
             setBuying(false);
+            setBought(true);
             setLoading(false);
-        } catch (_) {
+        } catch (e) {
+            console.log(e);
+            setErrors({
+                formError: "Error, try again...",
+            });
             setLoading(false);
         }
     };
 
     return (
         <>
-            <button
-                className={`continueButton | ${totalPrice <= 0 && "hidden"}`}
-                onClick={() => setBuying(true)}
-            >
-                Buy seats {Math.round(totalPrice)} Bs
-            </button>
+            {wasBought ? (
+                <span className="continueButton">
+                    Thank you for your purchase
+                </span>
+            ) : (
+                <button
+                    className={`continueButton | ${
+                        totalPrice <= 0 && "hidden"
+                    }`}
+                    onClick={() => setBuying(true)}
+                >
+                    Buy seats {Math.round(totalPrice)} Bs
+                </button>
+            )}
 
             <Popup isOpen={isBuying}>
                 <form onSubmit={handleSubmit} className="reservation-form">
@@ -150,6 +150,9 @@ const PurchaseForm = () => {
                             handleInputChange={handleInputChange}
                         />
                     </div>
+                    {errors.formError && (
+                        <p className="error">{errors.formError}</p>
+                    )}
                     <div className="form-actions">
                         <button type="button" onClick={cancelPurchase}>
                             Cancel
