@@ -20,14 +20,12 @@ const Theater = ({ movieId, hourId }) => {
                 for (let i = 0; i < res.length; i++) {
                     for (let j = 0; j < res[i].hours.length; j++) {
                         if (res[i].hours[j].id === hourId) {
-                            console.log(res[i].hours[j]);
                             setSchedule(res[i].hours[j]);
                         }
                     }
                 }
             })
             .catch((exception) => {
-                console.log(exception);
                 router.back();
             });
     }, [movieId, hourId]);
