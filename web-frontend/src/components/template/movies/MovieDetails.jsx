@@ -5,11 +5,36 @@ import MoviePoster from "@/components/molecules/movies/MoviePoster";
 import MovieInfo from "@/components/molecules/movies/MovieInfo";
 import MovieSchedule from "@/components/molecules/movies/MovieSchedule";
 import Link from "next/link";
+import {
+    fetchSingleMovie,
+    fetchMovieShowtimes,
+} from "@/utils/data_fetchers/MoviesFetcher";
+import { useRouter } from "next/navigation";
 
-const MovieDetails = ({ movie, showtimes }) => {
+const MovieDetails = ({ movieId }) => {
+    const router = useRouter();
+    const [movie, setMovie] = useState(null);
+    const [showtimes, setShowTime] = useState(null);
+
     const [selectedDay, setSelectedDay] = useState(null);
     const [selectedSchedule, setSelectedSchedule] = useState(null);
     const [selectedScheduleObj, setSelectedScheduleObj] = useState(null);
+
+    useEffect(() => {
+        fetchSingleMovie(movieId)
+            .then((res) => setMovie(res))
+            .catch(() => {
+                router.back();
+            });
+    }, []);
+
+    useEffect(() => {
+        fetchMovieShowtimes(movieId)
+            .then((res) => setShowTime(res))
+            .catch(() => {
+                router.back();
+            });
+    }, []);
 
     useEffect(() => {
         if (showtimes && showtimes.length > 0) {
@@ -50,6 +75,10 @@ const MovieDetails = ({ movie, showtimes }) => {
             prevHour === hourObj.showtime ? null : hourObj.showtime,
         );
     };
+
+    if (!movie || !showtimes) {
+        return <div>loading...</div>;
+    }
 
     return (
         <section className="movieDetails">
