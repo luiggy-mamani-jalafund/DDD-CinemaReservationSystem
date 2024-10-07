@@ -9,4 +9,8 @@ public interface IShowtimeRepository
     List<Hour> GetHoursByScheduleId(string scheduleId);
 
     List<object> GetShowtimesByMovieId(string movieId);
+
+    Hour GetHourById(string hourId);
+
+    void UpdateHour(Hour hour);
 }
