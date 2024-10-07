@@ -4,6 +4,9 @@ using WebApi.src.Domain.Entities.Theaters;
 using WebApi.src.Infraestructure.Dtos.TheatersDtos;
 using Infraestructure.Dtos;
 using WebApi.src.Infraestructure.Dtos.ScheduleDtos;
+using Domain.Entities.Schedules;
+using Infraestructure.Dtos.ScheduleDtos;
+using Domain.Entities;
 
 namespace Infraestructure.Configurations;
 
@@ -14,6 +17,7 @@ public class MappingProfile : Profile
         MappingMovies();
         MappingTheaters();
         MappingShedules();
+        MappingPurchase();
     }
 
     private void MappingMovies()
@@ -37,5 +41,11 @@ public class MappingProfile : Profile
         CreateMap<ScheduleDto, Schedule>();
         CreateMap<Hour, HourDto>();
         CreateMap<HourDto, Hour>();
+    }
+
+    private void MappingPurchase()
+    {
+        CreateMap<PurchaseDto, Purchase>();
+        CreateMap<ClientDto, Client>();
     }
 }
