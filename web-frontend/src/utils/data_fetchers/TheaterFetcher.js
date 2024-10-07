@@ -1,7 +1,7 @@
 export async function getSeatsOccupied(schedule, theater) {
     try {
         let response = await fetch(
-            "http://localhost:5011/api/Theaters/occupiedseats",
+            "http://localhost:5011/api/Theater/occupiedseats",
             {
                 method: "POST",
                 headers: {
@@ -24,7 +24,7 @@ export async function getSeatsOccupied(schedule, theater) {
 
 export async function getTheaterById(theaterId) {
     let response = await fetch(
-        `http://localhost:5011/api/Theaters/${theaterId}`,
+        `http://localhost:5011/api/Theater/${theaterId}`,
     );
     let theater = await response.json();
 

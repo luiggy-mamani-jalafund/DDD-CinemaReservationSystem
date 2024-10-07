@@ -1,0 +1,64 @@
+.overall {
+    position: relative;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 2000;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: #00000093;
+    transition: all ease-in 300ms;
+    animation: overall-in 200ms linear;
+}
+
+.overall.child-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-wrapper {
+    max-width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    border-radius: 0.833333333rem;
+    background-color: var(--white);
+    transition: all ease-in 400ms;
+    animation: popup-in 200ms linear;
+    border: 2px solid white;
+
+    background-color: #000;
+}
+
+@keyframes popup-in {
+    from {
+        opacity: 0.8;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.popup-close-button {
+    position: absolute;
+    top: 20%;
+    right: 20%;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all ease-out 200ms;
+}
+
+.popup-close-button > svg {
+    fill: white;
+}
+
+.popup-close-button:hover {
+    transform: scale(1.1);
+}

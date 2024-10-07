@@ -8,7 +8,7 @@ using WebApi.src.Infraestructure.Dtos.TheatersDtos;
 namespace Controllers.Concrete;
 
 [ApiController]
-[Route("api/Theaters")]
+[Route("api/[controller]")]
 public class TheaterController : ControllerBase
 {
     private readonly IMapper _mapper;

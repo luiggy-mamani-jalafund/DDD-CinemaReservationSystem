@@ -1,13 +1,9 @@
 import MovieDetails from "@/components/template/movies/MovieDetails";
-import { fetchSingleMovie, fetchMovieShowtimes } from "@/utils/data_fetchers/MoviesFetcher";
 
 export default async function MoviePage({ params }) {
-    const movie = await fetchSingleMovie(params);
-    const showtimes = await fetchMovieShowtimes(params);
-
     return (
         <div>
-            <MovieDetails movie={movie} showtimes={showtimes} />
+            <MovieDetails movieId={params.id} />
         </div>
     );
 }
