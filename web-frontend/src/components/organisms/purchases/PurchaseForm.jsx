@@ -10,10 +10,13 @@ import CvcPurchase from "@/components/molecules/purchases/CvcPurchase";
 import DueDateCardPurchase from "@/components/molecules/purchases/DueDateCardPurchase";
 import Popup from "../Popup";
 import { TheaterContext } from "@/contexts/TheaterContext";
+import { usePathname, useRouter } from "next/navigation";
 
 const PurchaseForm = () => {
-    const { schedule, theater, selectedSeats, getTotalPrice } =
+    const { schedule, selectedSeats, getTotalPrice } =
         useContext(TheaterContext);
+    const router = useRouter();
+    const pathname = usePathname();
     const totalPrice = getTotalPrice();
     const [isBuying, setBuying] = useState(false);
 
@@ -39,6 +42,33 @@ const PurchaseForm = () => {
         });
     };
 
+    const formToPurchaseObj = () => {
+        return {
+            hourScheduleId: schedule.id,
+            reservedSeats: selectedSeats.map((seat) => seat.seatId),
+            client: {
+                ci: formData.ci,
+                fullName: formData.fullName,
+                email: formData.email,
+            },
+        };
+    };
+
+    const updateTheater = () => {
+        let updatedSchedule = {
+            ...schedule,
+            reservedSeats: [
+                ...schedule.reservedSeats,
+                ...selectedSeats.map((seat) => seat.seatId),
+            ],
+        };
+
+        const queryString = objectToQueryString(updatedSchedule);
+        let newUrl = `${pathname}?${queryString}`;
+        window.history.replaceState({}, "", newUrl);
+        router.refresh();
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (loading) {
@@ -48,7 +78,16 @@ const PurchaseForm = () => {
         setLoading(true);
 
         if (!validateForm(formData, setErrors)) {
+            setLoading(false);
             return;
+        }
+
+        try {
+            updateTheater();
+            setBuying(false);
+            setLoading(false);
+        } catch (_) {
+            setLoading(false);
         }
     };
 
@@ -63,7 +102,9 @@ const PurchaseForm = () => {
 
             <Popup isOpen={isBuying}>
                 <form onSubmit={handleSubmit} className="reservation-form">
-                    <h2 className="reservation-form-title">Purchase of Seats</h2>
+                    <h2 className="reservation-form-title">
+                        Purchase of Seats
+                    </h2>
                     <h3 className="reservation-form-subtitle">Personal Data</h3>
 
                     <TextPurchase
@@ -126,3 +167,8 @@ const PurchaseForm = () => {
 };
 
 export default PurchaseForm;
+
+function objectToQueryString(obj, paramName = "schedule") {
+    const encodedValue = encodeURIComponent(JSON.stringify(obj));
+    return `${paramName}=${encodedValue}`;
+}

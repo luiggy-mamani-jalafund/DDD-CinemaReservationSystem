@@ -19,8 +19,8 @@ const Theater = () => {
 
         if (scheduleParam) {
             try {
-                const decodedSchedule = decodeURIComponent(scheduleParam);
-                const parsedSchedule = JSON.parse(decodedSchedule);
+                // const decodedSchedule = decodeURIComponent(scheduleParam);
+                const parsedSchedule = JSON.parse(scheduleParam);
                 setSchedule(parsedSchedule);
             } catch (_) {
                 router.back();
