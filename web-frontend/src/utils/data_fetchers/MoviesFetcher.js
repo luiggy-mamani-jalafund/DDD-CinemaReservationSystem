@@ -12,15 +12,11 @@ export async function fetchAvailableMovies() {
 
         return movies;
     } catch (e) {
-        console.log(e);
-
         return [];
     }
 }
 
-export async function fetchMovieShowtimes(movieId) {
-    console.log(`http://localhost:5011/api/Showtime/${movieId}`);
-    
+export async function fetchMovieShowtimes(movieId) {    
     const response = await fetch(
         `http://localhost:5011/api/Showtime/${movieId}`,
     );

@@ -75,7 +75,6 @@ const PurchaseForm = () => {
             setBought(true);
             setLoading(false);
         } catch (e) {
-            console.log(e);
             setErrors({
                 formError: "Error, try again...",
             });
