@@ -29,14 +29,14 @@ public class MovieController : ControllerBase
     }
 
     [HttpGet("{movieId}")]
-    public IActionResult GetMovieById(string movieId)
+    public async Task<IActionResult> GetMovieById(string movieId)
     {
         if (!ObjectId.TryParse(movieId, out _))
         {
             return BadRequest("Invalid movie ID.");
         }
 
-        var movie = _movieBillboardService.GetMovieById(movieId);
+        var movie = await _movieBillboardService.GetMovieById(movieId);
 
         if (movie == null)
         {

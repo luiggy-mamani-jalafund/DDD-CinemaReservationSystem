@@ -24,8 +24,15 @@ namespace Infraestructure.Cache
 
         public async Task SetAsync<T>(string key, T value, TimeSpan? expiry = null)
         {
-            var json = JsonSerializer.Serialize(value);
-            await _redisDatabase.StringSetAsync(key, json, expiry);
+            try
+            {
+                var json = JsonSerializer.Serialize(value);
+                await _redisDatabase.StringSetAsync(key, json, expiry);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Error serializing object for cache.", ex);
+            }
         }
 
         public async Task RemoveAsync(string key)

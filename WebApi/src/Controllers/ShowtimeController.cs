@@ -14,10 +14,18 @@ public class ShowtimeController : ControllerBase
         _showtimeRepository = showtimeRepository;
     }
 
-    [HttpGet("{movieId}")]
-    public IActionResult GetShowtimesByMovieId(string movieId)
+    [HttpGet("movie/{movieId}")]
+    public async Task<IActionResult> GetShowtimesByMovieId(string movieId)
     {
-        var showtimes = _showtimeRepository.GetShowtimesByMovieId(movieId);
-        return Ok(showtimes);
+        try
+        {
+            var showtimes = await _showtimeRepository.GetShowtimesByMovieId(movieId);
+
+            return Ok(showtimes);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}");
+        }
     }
 }

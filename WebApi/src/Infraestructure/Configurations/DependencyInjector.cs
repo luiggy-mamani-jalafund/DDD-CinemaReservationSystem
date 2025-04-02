@@ -26,6 +26,7 @@ public static class DependencyInjector
         services.AddScoped<ITheaterRepository, TheaterRepository>();
         services.AddScoped<IShowtimeRepository, ShowtimeRepository>();
         services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+        services.AddScoped<IScheduleRepository, ScheduleRepository>();
     }
 
     private static void InjectServices(IServiceCollection services)

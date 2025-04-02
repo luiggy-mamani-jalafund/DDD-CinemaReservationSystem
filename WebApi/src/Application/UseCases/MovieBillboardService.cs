@@ -34,10 +34,23 @@ public class MovieBillboardService : IMovieBillboardService
         return movies;
     }
 
-    public Movie? GetMovieById(string movieId)
+    public async Task<Movie?> GetMovieById(string movieId)
     {
-        var movies = _movieRepository.GetMovieById(movieId);
+        var cacheKey = $"movie_{movieId}";
+        var cachedMovie = await _cacheService.GetAsync<Movie>(cacheKey);
 
-        return movies;
+        if (cachedMovie != null)
+        {
+            return cachedMovie;
+        }
+
+        var movie = _movieRepository.GetMovieById(movieId);
+
+        if (movie != null)
+        {
+            await _cacheService.SetAsync(cacheKey, movie, TimeSpan.FromMinutes(10));
+        }
+
+        return movie;
     }
 }
