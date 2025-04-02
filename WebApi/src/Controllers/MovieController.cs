@@ -20,9 +20,9 @@ public class MovieController : ControllerBase
     }
 
     [HttpGet("active")]
-    public IActionResult GetActiveMovies()
+    public async Task<IActionResult> GetActiveMovies()
     {
-        var movies = _movieBillboardService.GetActiveMovies();
+        var movies = await _movieBillboardService.GetActiveMovies();
         var moviesResponse = _mapper.Map<MovieDto[]>(movies);
 
         return Ok(moviesResponse);

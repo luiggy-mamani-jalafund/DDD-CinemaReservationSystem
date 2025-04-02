@@ -7,6 +7,7 @@ using WebApi.src.Infraestructure.Repositories;
 using Application.UseCaseAbstractions;
 using Application.UseCases;
 using Domain.Repositories;
+using Infraestructure.Cache;
 
 namespace Infraestructure.Configurations;
 
@@ -16,6 +17,7 @@ public static class DependencyInjector
     {
         InjectRepositories(services);
         InjectServices(services);
+        services.AddScoped<ICacheService, RedisCacheService>();
     }
 
     private static void InjectRepositories(IServiceCollection services)
