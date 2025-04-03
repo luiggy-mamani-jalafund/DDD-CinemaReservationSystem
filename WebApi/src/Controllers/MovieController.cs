@@ -20,23 +20,23 @@ public class MovieController : ControllerBase
     }
 
     [HttpGet("active")]
-    public IActionResult GetActiveMovies()
+    public async Task<IActionResult> GetActiveMovies()
     {
-        var movies = _movieBillboardService.GetActiveMovies();
+        var movies = await _movieBillboardService.GetActiveMovies();
         var moviesResponse = _mapper.Map<MovieDto[]>(movies);
 
         return Ok(moviesResponse);
     }
 
     [HttpGet("{movieId}")]
-    public IActionResult GetMovieById(string movieId)
+    public async Task<IActionResult> GetMovieById(string movieId)
     {
         if (!ObjectId.TryParse(movieId, out _))
         {
             return BadRequest("Invalid movie ID.");
         }
 
-        var movie = _movieBillboardService.GetMovieById(movieId);
+        var movie = await _movieBillboardService.GetMovieById(movieId);
 
         if (movie == null)
         {

@@ -1,21 +1,35 @@
 import React from 'react';
 
-const MovieSchedule = ({ showtimes, selectedDay, selectedSchedule, handleDayClick, handleScheduleClick }) => (
+const MovieSchedule = ({ showtimes = [], selectedDay, selectedSchedule, handleDayClick, handleScheduleClick }) => (
     <div className="movieSchedule">
         <h2 className="secondary primary-font">Days</h2>
         <div className="days">
-            {showtimes && showtimes.length > 0 ? (
+            {Array.isArray(showtimes) && showtimes.length > 0 ? (
                 showtimes.map((schedule, index) => {
-                    const day = new Date(schedule.date).toLocaleDateString("es-ES", { day: '2-digit' });
-                    return (
-                        <div
-                            key={index}
-                            className={`day ${selectedDay === day ? 'selected' : ''}`}
-                            onClick={() => handleDayClick(day)}
-                        >
-                            {day}
-                        </div>
-                    );
+                    if (!schedule || !schedule.Date) return null;
+                    
+                    try {
+                        const date = new Date(schedule.Date);
+                        if (isNaN(date.getTime())) {
+                            console.error("Fecha inválida:", schedule.Date);
+                            return null;
+                        }
+                        
+                        const day = date.getDate().toString().padStart(2, '0');
+                        
+                        return (
+                            <div
+                                key={index}
+                                className={`day ${selectedDay === day ? 'selected' : ''}`}
+                                onClick={() => handleDayClick(day)}
+                            >
+                                {day}
+                            </div>
+                        );
+                    } catch (e) {
+                        console.error("Error procesando fecha:", e);
+                        return null;
+                    }
                 })
             ) : (
                 <p>There are no days available.</p>
@@ -24,21 +38,34 @@ const MovieSchedule = ({ showtimes, selectedDay, selectedSchedule, handleDayClic
 
         <h2 className="secondary primary-font">Schedules</h2>
         <div className="schedules">
-            {showtimes && showtimes.length > 0 ? (
-                showtimes.flatMap((schedule) =>
-                    schedule.hours.map((hour, index) => {
-                        const day = new Date(schedule.date).toLocaleDateString("es-ES", { day: '2-digit' });
-                        return selectedDay === day ? (
-                            <div
-                                key={index}
-                                className={`scheduleTime ${selectedSchedule === hour.showtime ? 'selected' : ''}`}
-                                onClick={() => handleScheduleClick(hour)}
-                            >
-                                {hour.showtime} - {hour.price} Bs.
-                            </div>
-                        ) : null;
-                    })
-                )
+            {Array.isArray(showtimes) && showtimes.length > 0 ? (
+                showtimes.flatMap((schedule) => {
+                    if (!schedule || !schedule.Date || !Array.isArray(schedule.Hours)) {
+                        return [];
+                    }
+                    
+                    try {
+                        const date = new Date(schedule.Date);
+                        if (isNaN(date.getTime())) return [];
+                        
+                        const day = date.getDate().toString().padStart(2, '0');
+                        
+                        return schedule.Hours.map((hour, index) => {
+                            return selectedDay === day ? (
+                                <div
+                                    key={index}
+                                    className={`scheduleTime ${selectedSchedule === hour.Showtime ? 'selected' : ''}`}
+                                    onClick={() => handleScheduleClick(hour)}
+                                >
+                                    {hour.Showtime} - {hour.Price} Bs.
+                                </div>
+                            ) : null;
+                        });
+                    } catch (e) {
+                        console.error("Error procesando horarios:", e);
+                        return [];
+                    }
+                })
             ) : (
                 <p>There are no available times.</p>
             )}

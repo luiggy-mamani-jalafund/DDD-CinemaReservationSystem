@@ -21,11 +21,11 @@ public class TheaterController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public IActionResult GetTheaterById(string id)
+    public async Task<IActionResult> GetTheaterById(string id)
     {
         try
         {
-            var theater = _theaterService.GetById(id);
+            var theater = await _theaterService.GetById(id);
             var theaterResponse = _mapper.Map<TheaterDto>(theater);
 
             return Ok(theaterResponse);

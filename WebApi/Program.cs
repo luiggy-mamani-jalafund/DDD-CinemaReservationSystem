@@ -1,8 +1,14 @@
 using Infraestructure.Data;
 using Infraestructure.Configurations;
 using WebApi.src.Infraestructure.Configurations;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+{
+    var redisConnectionString = "localhost:6379";
+    return ConnectionMultiplexer.Connect(redisConnectionString);
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

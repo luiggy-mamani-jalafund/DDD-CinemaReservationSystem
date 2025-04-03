@@ -37,30 +37,47 @@ const MovieDetails = ({ movieId }) => {
     }, []);
 
     useEffect(() => {
-        if (showtimes && showtimes.length > 0) {
-            const firstDay = new Date(showtimes[0].date).toLocaleDateString(
-                "es-ES",
-                {
-                    day: "2-digit",
-                },
-            );
-            setSelectedDay(firstDay);
-            setSelectedSchedule(showtimes[0].hours[0].showtime);
-            setSelectedScheduleObj(showtimes[0].hours[0]);
+        console.log("Showtimes recibido:", JSON.stringify(showtimes));
+        
+        if (showtimes && Array.isArray(showtimes) && showtimes.length > 0) {
+            if (showtimes[0].Date) {
+                try {
+                    const dateStr = showtimes[0].Date;
+                    const date = new Date(dateStr);
+                    
+                    if (!isNaN(date.getTime())) {
+                        const day = date.getDate().toString().padStart(2, '0');
+                        setSelectedDay(day);
+                        
+                        if (showtimes[0].Hours && showtimes[0].Hours.length > 0) {
+                            setSelectedSchedule(showtimes[0].Hours[0].Showtime);
+                            setSelectedScheduleObj(showtimes[0].Hours[0]);
+                        }
+                    }
+                } catch (e) {
+                    console.error("Error procesando fecha:", e);
+                }
+            }
         }
     }, [showtimes]);
-
+    
     const handleDayClick = (day) => {
-        setSelectedDay((prevDay) => (prevDay === day ? null : day));
-        const newSchedule = showtimes.find(
-            (schedule) =>
-                new Date(schedule.date).toLocaleDateString("es-ES", {
-                    day: "2-digit",
-                }) === day,
-        );
-        if (newSchedule) {
-            setSelectedSchedule(newSchedule.hours[0].showtime);
-            setSelectedScheduleObj(newSchedule.hours[0]);
+        setSelectedDay(day);
+        
+        if (!Array.isArray(showtimes)) return;
+        
+        const selectedSchedule = showtimes.find(schedule => {
+            if (schedule.Date) {
+                const scheduleDate = new Date(schedule.Date);
+                const scheduleDay = scheduleDate.getDate().toString().padStart(2, '0');
+                return scheduleDay === day;
+            }
+            return false;
+        });
+        
+        if (selectedSchedule && selectedSchedule.Hours && selectedSchedule.Hours.length > 0) {
+            setSelectedSchedule(selectedSchedule.Hours[0].Showtime);
+            setSelectedScheduleObj(selectedSchedule.Hours[0]);
         } else {
             setSelectedSchedule(null);
             setSelectedScheduleObj(null);
