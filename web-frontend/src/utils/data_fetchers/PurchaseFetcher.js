@@ -1,6 +1,6 @@
 export async function purchase(purchaseObj) {
     let response = await fetch(
-        "http://localhost:5011/api/Purchase/confirmPurchase",
+        "http://localhost:5121/api/Purchase/confirmPurchase",
         {
             method: "POST",
             headers: {
