@@ -2,8 +2,9 @@
 
 | Members  |
 |----------|
-| Luiggy Mamani Condori |
+| Luiggy Mamani Condori       |
 | Salet Yasmin Gutierrez Nava |
+| Axel Ayala Siles            |
 
 ## How to render the C4 (.dsl files)?
 
