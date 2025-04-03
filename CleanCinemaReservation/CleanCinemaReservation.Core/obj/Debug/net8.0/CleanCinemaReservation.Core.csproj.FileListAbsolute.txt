@@ -1,0 +1,12 @@
+/home/axel/Documents/JALA-USB/escalabilidad-sistemas/proyecto-final/DDD-CinemaReservationSystem/CleanCinemaReservation/CleanCinemaReservation.Core/bin/Debug/net8.0/CleanCinemaReservation.Core.deps.json
+/home/axel/Documents/JALA-USB/escalabilidad-sistemas/proyecto-final/DDD-CinemaReservationSystem/CleanCinemaReservation/CleanCinemaReservation.Core/bin/Debug/net8.0/CleanCinemaReservation.Core.dll
+/home/axel/Documents/JALA-USB/escalabilidad-sistemas/proyecto-final/DDD-CinemaReservationSystem/CleanCinemaReservation/CleanCinemaReservation.Core/bin/Debug/net8.0/CleanCinemaReservation.Core.pdb
+/home/axel/Documents/JALA-USB/escalabilidad-sistemas/proyecto-final/DDD-CinemaReservationSystem/CleanCinemaReservation/CleanCinemaReservation.Core/obj/Debug/net8.0/CleanCinemaReservation.Core.csproj.AssemblyReference.cache
+/home/axel/Documents/JALA-USB/escalabilidad-sistemas/proyecto-final/DDD-CinemaReservationSystem/CleanCinemaReservation/CleanCinemaReservation.Core/obj/Debug/net8.0/CleanCinemaReservation.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/axel/Documents/JALA-USB/escalabilidad-sistemas/proyecto-final/DDD-CinemaReservationSystem/CleanCinemaReservation/CleanCinemaReservation.Core/obj/Debug/net8.0/CleanCinemaReservation.Core.AssemblyInfoInputs.cache
+/home/axel/Documents/JALA-USB/escalabilidad-sistemas/proyecto-final/DDD-CinemaReservationSystem/CleanCinemaReservation/CleanCinemaReservation.Core/obj/Debug/net8.0/CleanCinemaReservation.Core.AssemblyInfo.cs
+/home/axel/Documents/JALA-USB/escalabilidad-sistemas/proyecto-final/DDD-CinemaReservationSystem/CleanCinemaReservation/CleanCinemaReservation.Core/obj/Debug/net8.0/CleanCinemaReservation.Core.csproj.CoreCompileInputs.cache
+/home/axel/Documents/JALA-USB/escalabilidad-sistemas/proyecto-final/DDD-CinemaReservationSystem/CleanCinemaReservation/CleanCinemaReservation.Core/obj/Debug/net8.0/CleanCinemaReservation.Core.dll
+/home/axel/Documents/JALA-USB/escalabilidad-sistemas/proyecto-final/DDD-CinemaReservationSystem/CleanCinemaReservation/CleanCinemaReservation.Core/obj/Debug/net8.0/refint/CleanCinemaReservation.Core.dll
+/home/axel/Documents/JALA-USB/escalabilidad-sistemas/proyecto-final/DDD-CinemaReservationSystem/CleanCinemaReservation/CleanCinemaReservation.Core/obj/Debug/net8.0/CleanCinemaReservation.Core.pdb
+/home/axel/Documents/JALA-USB/escalabilidad-sistemas/proyecto-final/DDD-CinemaReservationSystem/CleanCinemaReservation/CleanCinemaReservation.Core/obj/Debug/net8.0/ref/CleanCinemaReservation.Core.dll
