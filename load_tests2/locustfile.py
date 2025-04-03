@@ -6,7 +6,7 @@ class CinemaUser(HttpUser):
     wait_time = between(1, 5)
 
     # URL base de tu API
-    host = "http://localhost:5011"
+    host = "http://localhost:5121"
 
     # Método que se ejecuta al iniciar cada usuario simulado
     def on_start(self):
