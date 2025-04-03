@@ -1,4 +1,5 @@
 using Domain;
+using Infraestructure.Cache;
 using WebApi.src.Application.UseCaseAbstractions;
 using WebApi.src.Application.Utils;
 using WebApi.src.Domain.Entities.Theaters;
@@ -9,15 +10,30 @@ namespace WebApi.src.Application.UseCases;
 public class TheaterService : ITheaterService
 {
     private readonly ITheaterRepository _theaterRepository;
+    private readonly ICacheService _cacheService;
 
-    public TheaterService(ITheaterRepository theaterRepository)
+    public TheaterService(ITheaterRepository theaterRepository, ICacheService cacheService)
     {
         _theaterRepository = theaterRepository;
+        _cacheService = cacheService;
     }
 
-    public Theater GetById(string theaterId)
+    public async Task<Theater> GetById(string theaterId)
     {
+        var cacheKey = $"theater_{theaterId}";
+        var cachedTheater = await _cacheService.GetAsync<Theater>(cacheKey);
+
+        if (cachedTheater != null)
+        {
+            return cachedTheater;
+        }
+
         var theater = _theaterRepository.GetById(theaterId);
+
+        if (theater != null)
+        {
+            await _cacheService.SetAsync(cacheKey, theater, TimeSpan.FromMinutes(5));
+        }
 
         return theater;
     }

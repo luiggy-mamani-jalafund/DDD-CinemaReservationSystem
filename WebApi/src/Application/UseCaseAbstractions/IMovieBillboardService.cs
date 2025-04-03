@@ -4,7 +4,7 @@ namespace Application.UseCaseAbstractions;
 
 public interface IMovieBillboardService
 {
-    public List<Movie> GetActiveMovies();
+    public Task<List<Movie>> GetActiveMovies();
 
-    public Movie? GetMovieById(string movieId);
+    public Task<Movie?> GetMovieById(string movieId);
 }
